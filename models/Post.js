@@ -84,8 +84,8 @@ const PostSchema = new Schema(
     }
 );
 
-// PostSchema.virtual('reactionCount').get(function() {
-//     return this.reactions.length
+// PostSchema.virtual('attendCount').get(function() {
+//     return this.attend.length
 // });
 
 const Post = model('Post', PostSchema);
