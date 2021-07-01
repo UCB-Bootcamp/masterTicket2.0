@@ -1,59 +1,54 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// create our User model
-class User extends Model {
-    checkPassword(loginPw) {
-      return bcrypt.compareSync(loginPw, this.password);
-    }
-  }
-
-User.init(
+const UserSchema = new Schema(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      username: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true
-        }
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [4]
-        }
-      }
+        username: {
+            type: String,
+            required: true,
+            trim: true,
+            unique: true
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: /.+\@.+\..+/ 
+
+        },
+        password: {
+            type: String,
+            required: true,
+            minLength: 4,
+        },
+        posts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Post'
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
     },
     {
-    hooks: {
-        async beforeCreate(newUserData) {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
+        toJSON: {
+            virtuals: true
         },
-        async beforeUpdate(updatedUserData) {
-            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            return updatedUserData;
-        }
-        },
-          sequelize,
-          timestamps: false,
-          freezeTableName: true,
-          underscored: true,
-          modelName: 'user'
-        }
-      );
+        id: false
+    }
+);
 
-  module.exports = User;
+// THIS IS IN CASE WE WANT TO COUNT POSTS
+// UserSchema.virtual('postCount').get(function() {
+//     return this.post.length;
+// });
+
+// Create the User model using the UserSchema
+const User = model('User', UserSchema);
+
+// Export the model
+module.exports = User;
