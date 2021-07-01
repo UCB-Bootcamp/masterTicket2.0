@@ -1,100 +1,93 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model, Types } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-class Post extends Model {
-    static attend(body, models) {
-        return models.Attend.create({
-            user_id: body.user_id,
-            post_id: body.post_id
-         }).then(() => {
-             return Post.findOne({
-                 where: {
-                     id: body.post_id
-                 },
-                 attributes: [
-                    'id',
-                    'event_title',
-                    'venue',
-                    'city',
-                    'band',
-                    'genre',
-                    'event_description',
-                    'featured_event',
-                    'created_at',
-                    [sequelize.literal('(SELECT COUNT(*) FROM attend WHERE post.id = attend.post_id)'),
-                    'attend_events']
-                ],
-                include: [
-                    {
-                        model: models.User,
-                        attributes: ['username']
-                    }
-                ] 
-             })
-         })
-    }
-};
-
-Post.init(
+const AttendSchema = new Schema(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+        postId: {
+            type: Schema.Types.ObjectId,
+            default: () => Types.ObjectId()
         },
-        event_title: {
-            type: DataTypes.STRING,
-            allowNull: false
+        attendingVar: {
+            type: Boolean,
+            required: true,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        venue: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        city: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        band: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        genre: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        event_description: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
-        featured_event: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true
-        },
-        date: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: false
+        username: {
+            type: String,
+            required: true
         }
     },
     {
-        sequelize,
-        timestamps: true,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'post'
+        toJSON: {
+            getters: true
+        },
+        id: false
     }
 );
+
+const PostSchema = new Schema(
+    {
+        eventTitle: {
+            type: String,
+            required: true,
+            minlength: 1,
+            maxlength: 208
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        venue: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        band: {
+            type: String,
+            required: true
+        },
+        genre: {
+            type: String,
+            required: true
+        },
+        eventDescription: {
+            type: String,
+            required: true
+        },
+        featuredEvent: {
+            type: Boolean,
+            required: false
+        },
+        date: {
+            type: String,
+            required: true
+        },
+        image: {
+            type: String,
+            required: true
+        },
+        attending: [AttendSchema]
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
+    }
+);
+
+// PostSchema.virtual('reactionCount').get(function() {
+//     return this.reactions.length
+// });
+
+const Post = model('Post', PostSchema);
 
 module.exports = Post;
