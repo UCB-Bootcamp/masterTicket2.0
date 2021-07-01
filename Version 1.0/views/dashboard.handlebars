@@ -1,0 +1,54 @@
+<section class="container">
+    <div class="row dashboard-posts">
+        <div class="col new-post-form card">
+            <h5 class="main-title text-center card-header">Create an Event</h5>
+        
+            <div class="col card-body">
+                <form class="topBefore form">
+                    <input id="event-title" type="text" placeholder="EVENT">
+                    <input id="venue" type="text" placeholder="VENUE">
+                    <input id="city" type="text" placeholder="CITY">
+                    <input id="band" type="text" placeholder="BAND">
+                    <input id="genre" type="text" placeholder="GENRE">
+                    <input id="date" type="text" placeholder="DATE (ex. Oct 21, 2025)">
+                     <div class="featured-event container">
+                        <input name="featured-event" id="featured-event" type="checkbox" placeholder="FEATURED EVENT">
+                        <label for="featured-event">This is a Featured Event!</label><br>
+                    </div>
+                    <textarea id="event-description" type="text" placeholder="EVENT DESCRIPTION"></textarea>
+                    <input id="submit" type="submit" value="GO!">
+                </form>
+            </div>
+        </div>
+        <div class="col new-post-form">
+            <h5 class="main-title text-center card-header">--Your Posts--</h5>
+            <ul class="card-body list-group list-group-flush">
+                {{#each posts as |post|}}
+                <li class="list-group-item">
+                    <h4>{{event_title}}</h4>
+                    <span>{{date}} |</span>
+                    <p>{{pluralize_people attend_count}} attending this event!</p>
+                    <p>{{user.username}} created this event!</p>
+                    <a href="/post/{{id}}">view post</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <h5 class="main-title text-center">--Your Plans--</h5>
+    {{!-- events they are attending --}}
+    {{#if attend_events}}
+        {{#each attend_events as |attend|}}
+        <div class="cards col-md-6 col-lg-3 ">
+            {{> post-info attend.post}}
+        </div>
+        {{/each}}
+    {{else}}
+        <p class="plans">You're not attending any events yet :(</p>
+    {{/if}}
+</section>
+
+<script src="/js/add-post.js"></script>
