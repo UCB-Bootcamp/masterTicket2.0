@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema(
@@ -13,7 +13,7 @@ const UserSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            match: /.+\@.+\..+/ 
+            match: /.+\@.+\..+/
 
         },
         password: {
@@ -23,13 +23,13 @@ const UserSchema = new Schema(
         },
         posts: [
             {
-                type: Schema.Types.ObjectId,
+                type: Types.ObjectId,
                 ref: 'Post'
             }
         ],
         friends: [
             {
-                type: Schema.Types.ObjectId,
+                type: Types.ObjectId,
                 ref: 'User'
             }
         ]
@@ -41,6 +41,20 @@ const UserSchema = new Schema(
         id: false
     }
 );
+
+UserSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
+});
+
+// compare the incoming password with the hashed password
+UserSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 // THIS IS IN CASE WE WANT TO COUNT POSTS
 // UserSchema.virtual('postCount').get(function() {
