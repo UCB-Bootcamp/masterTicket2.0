@@ -21,7 +21,7 @@ const resolvers = {
     Mutation: {
         addUser: async (_, args) => {
             const user = await User.create(args);
-            return { user };
+            return  user;
         }
     }
 };
