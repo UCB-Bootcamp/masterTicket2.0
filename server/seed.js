@@ -17,7 +17,7 @@ MongoClient.connect(url, function(err, client) {
 
   // get access to the relevant collections
   const usersCollection = db.collection('users');
-  //const postsCollection = db.collection('posts');
+  const postsCollection = db.collection('posts');
   // make a bunch of users
   let users = [];
   for (let i = 0; i < 10; i += 1) {
@@ -28,32 +28,29 @@ MongoClient.connect(url, function(err, client) {
     };
     users.push(newUser);
 
-    // visual feedback always feels nice!
     console.log(newUser.username, newUser.email);
   }
   usersCollection.insertMany(users);
 
   // make a bunch of posts
-  // let posts = [];
-  // for (let i = 0; i < 5000; i += 1) {
-  //   let newPost = {
-  //     title: faker.lorem.words(7),
-  //     body: faker.lorem.words(500),
+  let posts = [];
+  for (let i = 0; i < 10; i += 1) {
+    let newPost = {
+      eventTitle: 'Weezer',
+      username: faker.internet.userName(),
+      venue: faker.company.companyName(),
+      city: faker.address.city(),
+      band: 'Weezer',
+      genre: faker.music.genre(),
+      eventDescription: faker.lorem.sentences(5),
+      date: faker.date.future(),
+      featuredEvent: faker.datatype.boolean()
+    };
+    posts.push(newPost);
 
-  //     // use lodash to pick a random user as the author of this post
-  //     author: _.sample(users),
-
-  //     // use lodash to add a random subset of the users to this post
-  //     likes: _.sampleSize(users, Math.round(Math.random * users.length)).map(
-  //       user => user._id
-  //     )
-  //   };
-  //   posts.push(newPost);
-
-  //   // visual feedback again!
-  //   console.log(newPost.title);
-  // }
-  // postsCollection.insertMany(posts);
+    console.log(newPost.eventTitle);
+  }
+  postsCollection.insertMany(posts);
   console.log("Database seeded! :)");
   client.close();
 });
