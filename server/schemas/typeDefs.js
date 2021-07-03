@@ -1,13 +1,8 @@
-const { gql } = requireI('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type Attend {
-        username: String!
-        attendingVar: Boolean!
-        postId: Post
-    }
-
     type Post {
+        _id: ID
         eventTitle: String!
         createdAt: String
         username: String!
@@ -19,32 +14,33 @@ const typeDefs = gql`
         featuredEvent: Boolean
         date: String!
         image: String!
-        attending: [Attend]
     }
 
     type User {
+        _id: ID
         username: String!
         email: String!
         password: String!
-        posts: [Post]
-        attend: []
+        posts: Post
+        attend: [Post]
     }
 
     type Query {
-        posts: 
-        post:
-        users:
-        user:
-    }
-
-    type Mutation {
-        login:
-        addUser:
-        updateUser:
-        deleteUser:
-        addPost:
-        updatePost:
-        deletePost:
-        attend:
+        posts: [Post]
+        post(_id: ID!): Post
+        users: [User]
+        user(username: String!): User
     }
 `;
+
+// type Mutation {
+//     login:
+//     addUser:
+//     updateUser:
+//     deleteUser:
+//     addPost:
+//     updatePost:
+//     deletePost:
+// }
+
+module.exports = typeDefs;
