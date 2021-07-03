@@ -1,4 +1,4 @@
-const { Post } = require('../models');
+const { Post, User } = require('../models');
 
 const resolvers = {
     Query: {
@@ -16,6 +16,12 @@ const resolvers = {
         user: async (_, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password');
+        }
+    },
+    Mutation: {
+        addUser: async (_, args) => {
+            const user = await User.create(args);
+            return { user };
         }
     }
 };
