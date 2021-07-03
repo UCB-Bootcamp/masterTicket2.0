@@ -20,7 +20,7 @@
     "url": "https://github.com/UCB-Bootcamp/masterTicket2.0/issues"
   },
   "homepage": "https://github.com/UCB-Bootcamp/masterTicket2.0#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^6.2.0"
   }
 }
