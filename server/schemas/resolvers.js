@@ -64,11 +64,20 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to login!');
         },
-        deletePost: async (_, { postId }) => {
-            const deletedPost = await Post.findOneAndDelete(
-                { _id: postId }
-            );
-            return deletedPost
+        deletePost: async (_, { postId }, context) => {
+            if(context.user) {
+                const deletedPost = await Post.findOneAndDelete(
+                    { _id: postId }
+                );
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { posts: { postId } } },
+                    { new: true, runValidators: true }
+                );
+                console.log(updatedUser);
+                return deletedPost
+            }
+            throw new AuthenticationError('You need to login!');
         },
         attend: async (_, args) => {
 
