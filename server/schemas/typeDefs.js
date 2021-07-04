@@ -14,6 +14,7 @@ const typeDefs = gql`
         featuredEvent: Boolean
         date: String!
         image: String!
+        attending: [User]
     }
 
     type User {
@@ -22,7 +23,7 @@ const typeDefs = gql`
         email: String!
         password: String!
         posts: Post
-        attend: [Post]
+        attending: [Post]
     }
 
     type Query {
@@ -38,12 +39,17 @@ const typeDefs = gql`
         createPost(username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
         updatePost(postId: ID!, username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
         deletePost(postId: ID!) : Post
-        attend(postId: ID!, username: String!) : Post
+        attend(postId: ID!) : Attend
     }
     
     type Auth {
         token: ID!
         user: User
+    }
+
+    type Attend {
+        user: User
+        post: Post
     }
 `;
 

@@ -32,6 +32,12 @@ const UserSchema = new Schema(
                 type: Types.ObjectId,
                 ref: 'User'
             }
+        ],
+        attending: [
+            {
+                type: Types.ObjectId,
+                ref: 'Post'
+            }
         ]
     },
     {

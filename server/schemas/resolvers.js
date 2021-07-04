@@ -4,7 +4,7 @@ const { signToken } =require('../utils/auth');
 
 const resolvers = {
     Query: {
-        posts: async (parent, { username }) => {
+        posts: async (_, { username }) => {
             const params = username ? { username } : {};
             return Post.find(params);
         },
@@ -12,7 +12,8 @@ const resolvers = {
             return Post.findOne( { _id });
         },
         users: async () => {
-            return User.find();
+            return User.find()
+                .select('-__v -password');
         },
         user: async (_, { username }) => {
             return User.findOne({ username })
@@ -51,7 +52,7 @@ const resolvers = {
 
                 return post;
             }
-            throw new AuthenticationError('You need to login!');
+            throw new AuthenticationError('You need to login to create a post!');
         },
         updatePost: async (_, args, context) => {
             if(context.user) {
@@ -62,7 +63,7 @@ const resolvers = {
                 );
                 return updatedPost;
             }
-            throw new AuthenticationError('You need to login!');
+            throw new AuthenticationError('You need to login to update a post!');
         },
         deletePost: async (_, { postId }, context) => {
             if(context.user) {
@@ -74,13 +75,28 @@ const resolvers = {
                     { $pull: { posts: { postId } } },
                     { new: true, runValidators: true }
                 );
-                console.log(updatedUser);
-                return deletedPost
+                return deletedPost;
             }
-            throw new AuthenticationError('You need to login!');
+            throw new AuthenticationError('You need to login to delete a post!');
         },
-        attend: async (_, args) => {
-
+        attend: async (_, { postId }, context) => {
+            if(context.user) {
+                const userId = context.user._id;
+                // console.log(typeof(userId));
+                const updatedPost = await Post.findOneAndUpdate(
+                    { _id: postId },
+                    { $push: { attending: { userId } } },
+                    { new: true, runValidators: true }
+                );
+                // const updatedUser = await User.findOneAndUpdate(
+                //     { _id: userId },
+                //     { $push: { attending: { postId } } },
+                //     { new: true, runValidators: true }
+                // );
+                // console.log(updatedUser);
+                return updatedPost;
+            }
+            throw new AuthenticationError('You need to login to attend events!');
         }
     }
 };
