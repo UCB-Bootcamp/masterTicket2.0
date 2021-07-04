@@ -60,6 +60,12 @@ const resolvers = {
                 { new: true, runValidators: true }
             );
             return updatedPost;
+        },
+        deletePost: async (_, { postId }) => {
+            const deletedPost = await Post.findOneAndDelete(
+                { _id: postId }
+            );
+            return deletedPost
         }
     }
 };
