@@ -91,7 +91,6 @@ const resolvers = {
                     { $push: { attending: postId } },
                     { new: true, runValidators: true }
                 );
-                console.log(updatedUser.attending);
                 return updatedPost;
             }
             throw new AuthenticationError('You need to login to attend events!');
