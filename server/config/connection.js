@@ -6,5 +6,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/masterticket2',
   useCreateIndex: true,
   useFindAndModify: false
 });
-ß
+
 module.exports = mongoose.connection;

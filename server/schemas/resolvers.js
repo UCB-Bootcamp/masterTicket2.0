@@ -12,8 +12,7 @@ const resolvers = {
             return Post.findOne( { _id });
         },
         users: async () => {
-            return User.find()
-                .select('-__v -password');
+            return User.find();
         },
         user: async (_, { username }) => {
             return User.findOne({ username })
