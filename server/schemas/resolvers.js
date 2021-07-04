@@ -40,17 +40,17 @@ const resolvers = {
             return { user, token };
         },
         createPost: async (_, args, context) => {
-            // if(context.user) {
+            if(context.user) {
                 const post = await Post.create(args);
 
-                // await User.findOneAndUpdate(
-                //     { email: },
-                //     { $push: { posts: post._id } },
-                //     { new: true }
-                // );
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { posts: post._id } },
+                    { new: true }
+                );
 
                 return post;
-            // }
+            }
             throw new AuthenticationError('You need to log in!');
         },
         updatePost: async (_, args) => {
@@ -66,6 +66,9 @@ const resolvers = {
                 { _id: postId }
             );
             return deletedPost
+        },
+        attend: async (_, args) => {
+
         }
     }
 };

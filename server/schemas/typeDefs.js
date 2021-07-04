@@ -38,6 +38,7 @@ const typeDefs = gql`
         createPost(username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
         updatePost(postId: ID!, username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
         deletePost(postId: ID!) : Post
+        attend(postId: ID!, username: String!) : Post
     }
     
     type Auth {
@@ -45,8 +46,5 @@ const typeDefs = gql`
         user: User
     }
 `;
-
-// more mutations
-// deletePost:
 
 module.exports = typeDefs;
