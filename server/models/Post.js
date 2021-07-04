@@ -1,21 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-// const AttendSchema = new Schema(
-//     {
-//         postId: {
-//             type: Types.ObjectId,
-//             ref: 'Post'
-//         }
-//     },
-//     {
-//         toJSON: {
-//             getters: true
-//         },
-//         id: false
-//     }
-// );
-
 const PostSchema = new Schema(
     {
         eventTitle: {
@@ -67,7 +52,7 @@ const PostSchema = new Schema(
         },
         attending: [
             {
-                type: String,
+                type: Types.ObjectId,
                 ref: 'User'
             }
         ]

@@ -81,19 +81,17 @@ const resolvers = {
         },
         attend: async (_, { postId }, context) => {
             if(context.user) {
-                // const userId = ;
-                // console.log(typeof(userId));
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { attending: { userId: context.user._id } } },
+                    { $push: { attending: context.user._id } },
                     { new: true, runValidators: true }
                 );
-                // const updatedUser = await User.findOneAndUpdate(
-                //     { _id: userId },
-                //     { $push: { attending: { postId } } },
-                //     { new: true, runValidators: true }
-                // );
-                // console.log(updatedUser);
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { attending: postId } },
+                    { new: true, runValidators: true }
+                );
+                console.log(updatedUser.attending);
                 return updatedPost;
             }
             throw new AuthenticationError('You need to login to attend events!');
