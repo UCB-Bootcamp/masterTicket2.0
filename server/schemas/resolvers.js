@@ -51,15 +51,18 @@ const resolvers = {
 
                 return post;
             }
-            throw new AuthenticationError('You need to log in!');
+            throw new AuthenticationError('You need to login!');
         },
-        updatePost: async (_, args) => {
-            const updatedPost = await Post.findOneAndUpdate(
-                { _id: args.postId },
-                { ...args },
-                { new: true, runValidators: true }
-            );
-            return updatedPost;
+        updatePost: async (_, args, context) => {
+            if(context.user) {
+                const updatedPost = await Post.findOneAndUpdate(
+                    { _id: args.postId },
+                    { ...args },
+                    { new: true, runValidators: true }
+                );
+                return updatedPost;
+            }
+            throw new AuthenticationError('You need to login!');
         },
         deletePost: async (_, { postId }) => {
             const deletedPost = await Post.findOneAndDelete(
