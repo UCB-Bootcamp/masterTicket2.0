@@ -20,7 +20,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        addUser: async (_, args) => {
+        createUser: async (_, args) => {
             const user = await User.create(args);
             const token = signToken(user);
             return { user, token };
@@ -38,7 +38,23 @@ const resolvers = {
             }
             const token = signToken(user);
             return { user, token };
-        }
+        },
+        createPost: async (_, args, context) => {
+            if(context.user) {
+                const post = await Post.create(args);
+
+                await User.findOneAndUpdate(
+                    { email },
+                    { $push: { posts: post._id } },
+                    { new: true }
+                );
+
+                return post;
+            }
+            throw new AuthenticationError('You need to log in!');
+            
+        },
+        
     }
 };
 
