@@ -40,21 +40,21 @@ const resolvers = {
             return { user, token };
         },
         createPost: async (_, args, context) => {
-            if(context.user) {
+            // if(context.user) {
                 const post = await Post.create(args);
 
-                await User.findOneAndUpdate(
-                    { email },
-                    { $push: { posts: post._id } },
-                    { new: true }
-                );
+                // await User.findOneAndUpdate(
+                //     { email: },
+                //     { $push: { posts: post._id } },
+                //     { new: true }
+                // );
 
                 return post;
-            }
+            // }
             throw new AuthenticationError('You need to log in!');
             
         },
-        
+
     }
 };
 
