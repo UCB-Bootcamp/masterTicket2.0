@@ -26,7 +26,7 @@ const PostSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now,
+            default: Date.now(),
             get: createdAtVal => dateFormat(createdAtVal)
         },
         username: {
@@ -67,7 +67,7 @@ const PostSchema = new Schema(
         },
         attending: [
             {
-                type: Types.ObjectId,
+                type: String,
                 ref: 'User'
             }
         ]

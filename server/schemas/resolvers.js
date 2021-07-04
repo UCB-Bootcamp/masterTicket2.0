@@ -81,11 +81,11 @@ const resolvers = {
         },
         attend: async (_, { postId }, context) => {
             if(context.user) {
-                const userId = context.user._id;
+                // const userId = ;
                 // console.log(typeof(userId));
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { attending: { userId } } },
+                    { $push: { attending: { userId: context.user._id } } },
                     { new: true, runValidators: true }
                 );
                 // const updatedUser = await User.findOneAndUpdate(

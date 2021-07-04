@@ -39,17 +39,12 @@ const typeDefs = gql`
         createPost(username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
         updatePost(postId: ID!, username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
         deletePost(postId: ID!) : Post
-        attend(postId: ID!) : Attend
+        attend(postId: ID!) : Post
     }
     
     type Auth {
         token: ID!
         user: User
-    }
-
-    type Attend {
-        user: User
-        post: Post
     }
 `;
 
