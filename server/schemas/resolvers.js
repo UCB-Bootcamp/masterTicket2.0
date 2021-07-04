@@ -52,9 +52,15 @@ const resolvers = {
                 return post;
             // }
             throw new AuthenticationError('You need to log in!');
-            
         },
-
+        updatePost: async (_, args) => {
+            const updatedPost = await Post.findOneAndUpdate(
+                { _id: args.postId },
+                { ...args },
+                { new: true, runValidators: true }
+            );
+            return updatedPost;
+        }
     }
 };
 
