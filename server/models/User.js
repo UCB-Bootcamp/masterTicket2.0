@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema(
@@ -23,14 +23,20 @@ const UserSchema = new Schema(
         },
         posts: [
             {
-                type: Schema.Types.ObjectId,
+                type: Types.ObjectId,
                 ref: 'Post'
             }
         ],
         friends: [
             {
-                type: Schema.Types.ObjectId,
+                type: Types.ObjectId,
                 ref: 'User'
+            }
+        ],
+        attending: [
+            {
+                type: Types.ObjectId,
+                ref: 'Post'
             }
         ]
     },
@@ -46,6 +52,20 @@ const UserSchema = new Schema(
 // UserSchema.virtual('postCount').get(function() {
 //     return this.post.length;
 // });
+
+UserSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
+});
+
+// compare the incoming password with the hashed password
+UserSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 // Create the User model using the UserSchema
 const User = model('User', UserSchema);

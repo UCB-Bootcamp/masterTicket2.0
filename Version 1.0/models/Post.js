@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 const AttendSchema = new Schema(
     {
         postId: {
-            type: Schema.Types.ObjectId,
+            type: Types.ObjectId,
             default: () => Types.ObjectId()
         },
         attendingVar: {
