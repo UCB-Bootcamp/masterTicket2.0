@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import Header from './components/Header';
+import PostList from './components/PostList';
 // import Footer from './components/Footer';
 
 // import Home from './pages/Home';
@@ -30,6 +31,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
+          <PostList />
           {/* <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
