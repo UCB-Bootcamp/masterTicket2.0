@@ -7,27 +7,8 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 
-// import Login from './pages/Login';
+import Login from './pages/Login';
 // import Dashboard from './pages/Dashboard';
-
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
-
-// const authLink = setContext((_, { headers }) => {
-//   const token = localStorage.getItem('id_token');
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
-
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
 
 const client = new ApolloClient({
   request: operation => {
@@ -47,15 +28,14 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          <Home />
-          {/* <div className="container">
+          <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/post/:id" component={SingleThought} />
+              {/* <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/post/:id" component={SingleThought} /> */}
             </Switch>
-          </div> */}
+          </div>
           <Footer />
         </div>
       </Router>
