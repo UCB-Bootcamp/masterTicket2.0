@@ -31,7 +31,7 @@ const PostList = (props) => {
     <div>
       {/* <h3>{title}</h3> */}
       {posts.map((post, i) => (
-        <div key={post.eventTitle}></div>
+        <p key={post.eventTitle}>{post.eventTitle}</p>
 
       ))}
   

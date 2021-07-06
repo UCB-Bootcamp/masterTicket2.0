@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 // import Footer from './components/Footer';
+import Footer from './components/Footer';
 
 // import Home from './pages/Home';
 // import Login from './pages/Login';
@@ -39,8 +40,8 @@ function App() {
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/post/:id" component={SingleThought} />
             </Switch>
-          </div>
-          <Footer /> */}
+          </div> */}
+          <Footer />
         </div>
       </Router>
     // </ApolloProvider>
