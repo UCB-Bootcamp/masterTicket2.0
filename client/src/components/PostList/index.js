@@ -24,15 +24,15 @@ const PostList = (props) => {
   if (!posts.length) {
     return <h3>No posts yet!</h3>
   }
-  console.log({posts});
+  // console.log({posts});
 
   return (
 
     <div>
       {/* <h3>{title}</h3> */}
       {posts &&
-        posts.map(post => (
-          <article class="card">
+        posts.map((post, i) => (
+          <article class="card" key={post._id}>
             <div class="card-info-hover">
               <i class="bi bi-heart"></i>
               <div class="card-clock-info">
