@@ -32,27 +32,27 @@ const PostList = (props) => {
       {/* <h3>{title}</h3> */}
       {posts &&
         posts.map((post, i) => (
-          <article class="card" key={post._id}>
-            <div class="card-info-hover">
-              <i class="bi bi-heart"></i>
-              <div class="card-clock-info">
-                <i class="bi bi-clock"></i>
-                <span class="card-time">{ post.date }</span>
+          <article className="card" key={post._id}>
+            <div className="card-info-hover">
+              <i className="bi bi-heart"></i>
+              <div className="card-clock-info">
+                <i className="bi bi-clock"></i>
+                <span className="card-time">{ post.date }</span>
               </div>
-              <div class="goto">
+              <div className="goto">
                 <button> <a href='/post/{ post._id }'>checkout post</a></button>
               </div>
             </div>
-            <div class="card-img">
+            <div className="card-img">
               <img src={ post.image } alt="a concert"/>
             </div>
-            <div class="card-img-hover">
+            <div className="card-img-hover">
               <img src={ post.image } alt="a concert"/>
             </div>
-            <div class="card-info">
-              <span class="card-category">{ post.band }</span>
-              <h3 class="card-title">{ post.eventTitle }</h3>
-              <span class="card-by">at <a href="#" class="card-author" title="author">{ post.venue }</a></span>
+            <div className="card-info">
+              <span className="card-category">{ post.band }</span>
+              <h3 className="card-title">{ post.eventTitle }</h3>
+              <span className="card-by">at <a href="#" className="card-author" title="author">{ post.venue }</a></span>
             </div>
           </article>
       ))}
