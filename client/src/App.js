@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import Header from './components/Header';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 
 // import Home from './pages/Home';
 // import Login from './pages/Login';
@@ -37,8 +37,8 @@ function App() {
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/post/:id" component={SingleThought} />
             </Switch>
-          </div>
-          <Footer /> */}
+          </div> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>
