@@ -28,7 +28,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-        {/* <div class="col-md-5 mx-auto">
+        <div class="col-md-5 mx-auto">
             <div id="second">
                 <div class="myform form signup-form">
                     <div class="logo mb-3">
@@ -39,32 +39,24 @@ const Login = () => {
                     <form action="#" name="registration">
                         <div class="form-group">
                             <label for="email-signup">Email</label>
-                            <input type="" name="email-signup" class="form-control" id="email-signup"
-                                aria-describedby="emailHelp" placeholder="Enter Email">
+                            <input type="" name="email-signup" class="form-control" id="email-signup" placeholder="Enter Email" />
                         </div>
                         <div class="form-group">
                             <label for="username-signup">Username</label>
-                            <input type="text" name="username-signup" class="form-control" id="username-signup"
-                                aria-describedby="emailHelp" placeholder="Enter Username">
+                            <input type="text" name="username-signup" class="form-control" id="username-signup" placeholder="Enter Username" />
                         </div>
                         <div class="form-group">
                             <label for="password-signup">Password</label>
-                            <input type="password" name="password-signup" id="password-signup" class="form-control"
-                                aria-describedby="emailHelp" placeholder="Enter Password">
+                            <input type="password" name="password-signup" id="password-signup" class="form-control" placeholder="Enter Password" />
                         </div>
                         <div class="col-md-12 text-center mb-3 social-btn">
                             <button type="submit" class="">Get Started For
                                 Free</button>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <p class="text-center"><a href="#" id="signin">Already have an account?</a></p>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
-        </div> */}
+        </div>
     </div>
 </div>
   )
