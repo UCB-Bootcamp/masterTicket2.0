@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
 
 const PostList = ({posts}) => {
 
@@ -10,7 +9,7 @@ const PostList = ({posts}) => {
   return (
 
     <div>
-      {/* <h3>{title}</h3> */}
+      <h5 class="text-center">--featured--</h5>
       {posts &&
         posts.map((post, i) => (
           <article className="card" key={i}>

@@ -5,7 +5,7 @@ import { QUERY_POSTS } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_POSTS);
+  const { data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
   console.log('posts', posts);
 
@@ -13,7 +13,6 @@ const Home = () => {
     <main>
       <PostList 
         posts={posts}
-        title = "==new events=="
       />
       <Featured />
     </main>
