@@ -3,39 +3,6 @@ import React, { useState } from 'react';
 
 const PostList = ({posts}) => {
 
-  // const [posts] = useState([
-  //   {
-  //     _id: 12345,
-  //     eventTitle: "Weezer",
-  //     // createdAt: "Jul 5, 2021",
-  //     username: "timmaayyy",
-  //     venue: "SB Bowl",
-  //     city: "Santa Barbara",
-  //     band: "Weezer",
-  //     genre: "Rock",
-  //     eventDescription: "Concert",
-  //     featuredEvent: false,
-  //     date: "Sep 23, 2021",
-  //     image: "none",
-  //     // attending: [User]
-  //   },
-  //   {
-  //     _id: 12345,
-  //     eventTitle: "Glass Animals",
-  //     // createdAt: "Jul 5, 2021",
-  //     username: "timmaayyy",
-  //     venue: "SB Bowl",
-  //     city: "Santa Barbara",
-  //     band: "Glass Animals",
-  //     genre: "Rock",
-  //     eventDescription: "Concert",
-  //     featuredEvent: false,
-  //     date: "Oct 23, 2021",
-  //     image: "none",
-  //     // attending: [User]
-  //   }
-  // ]);
-
   if (!posts.length) {
     return <h3>No posts yet!</h3>
   }
