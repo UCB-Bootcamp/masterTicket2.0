@@ -5,12 +5,9 @@ import ApolloClient from 'apollo-boost';
 
 import Header from './components/Header';
 import Home from './pages/Home';
-// import Footer from './components/Footer';
 import Footer from './components/Footer';
 
-// import Home from './pages/Home';
 // import Login from './pages/Login';
-// import SingleThought from './pages/SinglePost';
 // import Dashboard from './pages/Dashboard';
 
 // const httpLink = createHttpLink({
