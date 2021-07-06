@@ -3,7 +3,6 @@ import PostList from '../components/PostList';
 import { QUERY_POSTS } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 
-
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
@@ -13,8 +12,8 @@ const Home = () => {
   return (
     <main>
       <PostList 
-        // posts={posts}
-        // title = "==new events=="
+        posts={posts}
+        title = "==new events=="
       />
     </main>
 
