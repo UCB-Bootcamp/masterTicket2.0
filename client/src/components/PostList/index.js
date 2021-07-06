@@ -16,7 +16,7 @@ const PostList = (props) => {
       eventDescription: "Concert",
       featuredEvent: false,
       date: "Sep 23, 2021",
-      // image: "none",
+      image: "none",
       // attending: [User]
     }
   ]);
@@ -30,37 +30,32 @@ const PostList = (props) => {
 
     <div>
       {/* <h3>{title}</h3> */}
-      {posts.map((post, i) => (
-        <p key={post.eventTitle}>{post.eventTitle}</p>
-
-      ))}
-  
-      {/* {posts &&
-        posts.map(post => ( */}
-          {/* <article class="card">
+      {posts &&
+        posts.map(post => (
+          <article class="card">
             <div class="card-info-hover">
               <i class="bi bi-heart"></i>
               <div class="card-clock-info">
                 <i class="bi bi-clock"></i>
-                <span class="card-time">{{ date }}</span>
+                <span class="card-time">{ post.date }</span>
               </div>
               <div class="goto">
-                <button> <a href='/post/{{ post._id }}'>checkout post</a></button>
+                <button> <a href='/post/{ post._id }'>checkout post</a></button>
               </div>
             </div>
-            {/* <div class="card-img">
-              <img src="{{ image }}" />
+            <div class="card-img">
+              <img src={ post.image } alt="a concert"/>
             </div>
             <div class="card-img-hover">
-              <img src="{{ image }}" />
-            </div> */}
-            {/* <div class="card-info">
-              <span class="card-category">{{ band }}</span>
-              <h3 class="card-title">{{ eventTitle }}</h3>
-              <span class="card-by">at <a href="#" class="card-author" title="author">{{ venue }}</a></span>
+              <img src={ post.image } alt="a concert"/>
             </div>
-          </article> */}
-        {/* ))} */}
+            <div class="card-info">
+              <span class="card-category">{ post.band }</span>
+              <h3 class="card-title">{ post.eventTitle }</h3>
+              <span class="card-by">at <a href="#" class="card-author" title="author">{ post.venue }</a></span>
+            </div>
+          </article>
+      ))}
     </div>
   )
 
