@@ -18,13 +18,27 @@ const PostList = (props) => {
       date: "Sep 23, 2021",
       image: "none",
       // attending: [User]
+    },
+    {
+      _id: 12345,
+      eventTitle: "Glass Animals",
+      // createdAt: "Jul 5, 2021",
+      username: "timmaayyy",
+      venue: "SB Bowl",
+      city: "Santa Barbara",
+      band: "Glass Animals",
+      genre: "Rock",
+      eventDescription: "Concert",
+      featuredEvent: false,
+      date: "Oct 23, 2021",
+      image: "none",
+      // attending: [User]
     }
   ]);
 
   if (!posts.length) {
     return <h3>No posts yet!</h3>
   }
-  // console.log({posts});
 
   return (
 
@@ -32,7 +46,7 @@ const PostList = (props) => {
       {/* <h3>{title}</h3> */}
       {posts &&
         posts.map((post, i) => (
-          <article className="card" key={post._id}>
+          <article className="card" key={i}>
             <div className="card-info-hover">
               <i className="bi bi-heart"></i>
               <div className="card-clock-info">
