@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-
+// import 'App.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Footer from './components/Footer';
