@@ -40,6 +40,24 @@ const resolvers = {
             const token = signToken(user);
             return { user, token };
         },
+        updateUser: async (_, args, context) => {
+            // PLAYING WITH VARIABLES!!
+            if(context.user) {
+                const user = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { ...args },
+                    // In use stability and do we want to have an undo?
+                    { new: true, runValidators: true }
+                );
+
+                if(!user) {
+                    throw new AuthenticationError('There is no user with this Email/ID');
+                }
+
+                return user;
+            }
+            throw new AuthenticationError('You need to login to update a user!')
+        },
         createPost: async (_, args, context) => {
             if(context.user) {
                 const post = await Post.create(args);
