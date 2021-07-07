@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { LOGIN_USER } from '../utils/mutations';
+import { CREATE_USER, LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Login = () => {
 	const [formState, setFormState] = useState({ "email": '', "password": '' });
   const [login, { error }] = useMutation(LOGIN_USER);
+	const [createUser] = useMutation(CREATE_USER);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -38,6 +39,20 @@ const Login = () => {
 			emailSignup: '',
 			passwordSignup: ''
     });
+  };
+
+	const handleSignupSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await createUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
 	return (
@@ -84,6 +99,8 @@ const Login = () => {
 						</div>
 					</div>
 				</div>
+	
+
 				<div class="col-md-5 mx-auto">
 					<div id="second">
 						<div class="myform form signup-form">
@@ -92,12 +109,12 @@ const Login = () => {
 									<h1>Signup</h1>
 								</div>
 							</div>
-							<form action="#" name="registration">
+							<form onSubmit={handleSignupSubmit} action="#" name="registration">
 								<div class="form-group">
 									<label for="email-signup">Email</label>
 									<input
 										type="email"
-										name="email-signup"
+										name="email"
 										className="form-control"
 										id="email-signup"
 										placeholder="Enter Email"
@@ -109,7 +126,7 @@ const Login = () => {
 									<label for="username-signup">Username</label>
 									<input
 										type="username"
-										name="username-signup"
+										name="username"
 										class="form-control"
 										id="username-signup"
 										placeholder="Enter Username"
@@ -121,7 +138,7 @@ const Login = () => {
 									<label for="password-signup">Password</label>
 									<input
 										type="password"
-										name="password-signup"
+										name="password"
 										id="password-signup"
 										class="form-control"
 										placeholder="Enter Password"
