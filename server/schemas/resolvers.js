@@ -58,6 +58,17 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to login to update a user!')
         },
+        deleteUser: async (_, args, context) => {
+            if(context.user) {
+                const deletedUser = await User.findOneAndDelete(
+                    { _id: context.user._id },
+                    { new: false, runValidators: true }
+                );
+
+                return deletedUser;
+            }
+            throw new AuthenticationError('You need to login to delete a post!');
+        },
         createPost: async (_, args, context) => {
             if(context.user) {
                 const post = await Post.create(args);
