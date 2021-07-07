@@ -13,3 +13,8 @@ export const QUERY_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    _
+  }
