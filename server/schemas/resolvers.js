@@ -8,6 +8,9 @@ const resolvers = {
             const params = username ? { username } : {};
             return Post.find(params);
         },
+        featuredEvents: async (_, { featuredEvents }) => {
+
+        },
         post: async (_, { _id }) => {
             return Post.findOne( { _id });
         },

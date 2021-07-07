@@ -6,6 +6,7 @@ import ApolloClient from 'apollo-boost';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import Featured from './components/Featured';
 
 import Login from './pages/Login';
 // import Dashboard from './pages/Dashboard';
@@ -31,6 +32,7 @@ function App() {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/featured" component={Featured} />
               <Route exact path="/login" component={Login} />
               {/* <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/post/:id" component={SingleThought} /> */}
