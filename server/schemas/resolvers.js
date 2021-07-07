@@ -11,6 +11,10 @@ const resolvers = {
         post: async (_, { _id }) => {
             return Post.findOne( { _id });
         },
+        featuredEvent: async (_, { featuredEvent }) => {
+            const params = featuredEvent ? { featuredEvent } : {};
+            return Post.find(params);
+        },
         users: async () => {
             return User.find()
                 .select('-__v -password');
