@@ -4,17 +4,15 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import Header from './components/Header';
+import Home from './pages/Home';
 import Footer from './components/Footer';
 
-// import Home from './pages/Home';
-// import Login from './pages/Login';
-// import SingleThought from './pages/SinglePost';
+import Login from './pages/Login';
 // import Dashboard from './pages/Dashboard';
 
 const client = new ApolloClient({
   request: operation => {
     const token = localStorage.getItem('id_token');
-
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : ''
@@ -30,14 +28,14 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          {/* <div className="container">
+          <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/post/:id" component={SingleThought} />
+              {/* <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/post/:id" component={SingleThought} /> */}
             </Switch>
-          </div> */}
+          </div>
           <Footer />
         </div>
       </Router>
