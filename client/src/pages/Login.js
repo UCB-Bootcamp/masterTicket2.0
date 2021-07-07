@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-// import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Login = () => {
-	const [formState, setFormState] = useState({ email: '', password: '' });
+	const [formState, setFormState] = useState({ "email": '', "password": '' });
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleChange = event => {
@@ -56,7 +56,7 @@ const Login = () => {
 									<label for="email-login">Email address</label>
 									<input
 										type="email"
-										name="email-login"
+										name="email"
 										className="form-control"
 										id="email-login"
 										value={formState.emailLogin}
@@ -68,7 +68,7 @@ const Login = () => {
 									<label for="password-login">Password</label>
 									<input
 										type="password"
-										name="password-login"
+										name="password"
 										id="password-login"
 										className="form-control"
 										placeholder="Enter Password"
@@ -134,6 +134,7 @@ const Login = () => {
 										Free</button>
 								</div>
 							</form>
+							{error && <div>Login failed</div>}
 						</div>
 					</div>
 				</div>
