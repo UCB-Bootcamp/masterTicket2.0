@@ -1,16 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 const PostList = ({posts}) => {
-
   if (!posts.length) {
     return <h3>No posts yet!</h3>
   }
 
   return (
-
     <div>
-      {/* <h3>{title}</h3> */}
       {posts &&
         posts.map((post, i) => (
           <article className="card" key={i}>
@@ -24,11 +20,8 @@ const PostList = ({posts}) => {
                 <button> <a href='/post/{ post._id }'>checkout post</a></button>
               </div>
             </div>
-            <div className="card-img">
-              <img src={ post.image } alt="a concert"/>
-            </div>
             <div className="card-img-hover">
-              <img src={ post.image } alt="a concert"/>
+              <img src={ post.image } alt={ post.eventTitle }/>
             </div>
             <div className="card-info">
               <span className="card-category">{ post.band }</span>
