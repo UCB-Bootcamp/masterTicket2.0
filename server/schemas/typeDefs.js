@@ -29,6 +29,7 @@ const typeDefs = gql`
     type Query {
         posts: [Post]
         post(_id: ID!): Post
+        featuredEvent(featuredEvent: Boolean): [Post]
         users: [User]
         user(username: String!): User
     }

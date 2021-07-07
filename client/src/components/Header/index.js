@@ -18,7 +18,7 @@ const Header = () => {
 
         <nav className="text-center">
           <Link to="/">Home</Link>
-          <Link to="/#featured">Featured</Link>
+          <Link to="/featured">Featured</Link>
           {Auth.loggedIn() ? (
             <>
               <Link to="/dashboard">Dashboard</Link>
