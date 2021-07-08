@@ -1,38 +1,49 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { }
+import { QUERY_SINGLE_POST } from '../utils/queries';
+import { useParams } from 'react-router-dom';
 
-const singlePost = () => {
+const SinglePost = () => {
+    const { id: postId } = useParams();
+    const { loading, data } = useQuery(QUERY_SINGLE_POST, {
+        variables: { id: postId }
+    });
+    const post = data || {};
+    console.log(post);
+
+    if(loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <section>
-            <div class="wrapper">
-                <div class="main-post">
-                    <div class="post-left">
-                        <div class="post-details">
-                            <h1>{{ post.event_title }}</h1>
-                            <div class="post-cat">
-                                <p class="venue">{{ post.venue }}</p>
-                                <p class="date">{{ post.date }}</p>
-                                <p class="genre">{{ post.genre }}</p>
-                                <p class="city">{{ post.city }}</p>
+            <div className="wrapper">
+                <div className="main-post">
+                    <div className="post-left">
+                        <div className="post-details">
+                            <h1>{ post.eventTitle }</h1>
+                            <div className="post-cat">
+                                <p className="venue">{post.venue}</p>
+                                <p className="date">{ post.date }</p>
+                                <p className="genre">{ post.genre }</p>
+                                <p className="city">{ post.city }</p>
                             </div>
-                            <p class="desc">{{ post.event_description }}</p>
-                            <div class="social-btn">
+                            <p className="desc">{ post.event_description }</p>
+                            <div className="social-btn">
 
                                 <button>
-                                    <i class="bi bi-thumbs-up"></i>{{ pluralize_people post.attend_count }} attending this event!
+                                    <i className="bi bi-thumbs-up"></i>{ post.attend_count } attending this event!
                                 </button>
 
-                                <button class="attend">
-                                    <i class="bi bi-thumbs-up"></i>ATTENDING?
+                                <button className="attend">
+                                    <i className="bi bi-thumbs-up"></i>ATTENDING?
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="post-right">
-                        <div class="img-container">
-                            <img src="{{ post.image }}" alt="" />
+                    <div className="post-right">
+                        <div className="img-container">
+                            <img src={ post.image } alt="" />
                         </div>
                     </div>
                 </div>
@@ -41,4 +52,4 @@ const singlePost = () => {
     );
 };
 
-            export default singlePost;
+export default SinglePost;
