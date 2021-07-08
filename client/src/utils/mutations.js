@@ -23,3 +23,13 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const ATTEND_EVENT = gql`
+  mutation attend($postId: ID!) {
+    attend(postId: $postId) {
+      attending {
+        _id
+      }
+    }
+  }
+`;

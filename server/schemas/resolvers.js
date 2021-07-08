@@ -87,12 +87,12 @@ const resolvers = {
             if(context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { attending: context.user._id } },
+                    { $addToSet: { attending: context.user._id } },
                     { new: true, runValidators: true }
                 );
-                const updatedUser = await User.findOneAndUpdate(
+                await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $push: { attending: postId } },
+                    { $addToSet: { attending: postId } },
                     { new: true, runValidators: true }
                 );
                 return updatedPost;

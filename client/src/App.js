@@ -2,14 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-// import 'App.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import Featured from './components/Featured';
 
 import Login from './pages/Login';
-
+import SinglePost from './pages/SinglePost';
 // import Dashboard from './pages/Dashboard';
 
 const client = new ApolloClient({
@@ -35,8 +34,8 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/featured" component={Featured} />
               <Route exact path="/login" component={Login} />
-              {/* <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/post/:id" component={SingleThought} /> */}
+              {/* <Route exact path="/dashboard" component={Dashboard} /> */}
+              <Route exact path="/post/:id" component={SinglePost} /> 
             </Switch>
           </div>
           <Footer />
