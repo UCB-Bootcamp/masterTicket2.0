@@ -38,8 +38,9 @@ const PostSchema = new Schema(
             type: String,
             required: true
         },
-        featuredEvent: {
-            type: Boolean,
+        featuredEvent: {    
+            type: Boolean, 
+            default: false,
             required: false
         },
         date: {

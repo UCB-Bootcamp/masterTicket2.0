@@ -3,18 +3,31 @@ import { useMutation } from '@apollo/react-hooks';
 import { CREATE_POST } from '../../utils/mutations';
 
 const PostForm = () => {
-  const [formState, setFormState] = useState({"eventTitle": '', "venue": '', "city": '', "band": '', "genre": '', "date": '', "eventDescription": ''});
+  // needed to create new featuredEvent variable for checkbox
+  const [formState, setFormState] = useState({"eventTitle": '', "venue": '', "city": '', "band": '', "genre": '', "date": '', "eventDescription": '', "featuredEvent": false});
   const [createPost, { error }] = useMutation(CREATE_POST);
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
+    // this.setState({
+    //   checked: checked
+    // })
+    // const checkValue = target.type ==='checkbox' ? target.checked : target.checkValue;
 
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
+      checked: value
     });
   }
   
+  // const handleChangeCheckbox = (e) => {
+  //   console.log(e.target.checked);
+  //   setState({ 
+  //     isChecked: e.target.checked
+  //   });
+  // }
+
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -34,7 +47,8 @@ const PostForm = () => {
 			band: '',
       genre: '',
       date: '',
-      eventDescription: ''
+      eventDescription: '',
+      featuredEvent: true
     });
     console.log(formState);
   }
@@ -51,7 +65,7 @@ const PostForm = () => {
           <input onChange={handleChange} value={formState.genre} name="genre" id="genre" type="text" placeholder="GENRE" />
           <input onChange={handleChange} value={formState.date} name="date" id="date" type="text" placeholder="DATE (ex. Oct 21, 2025)" />
           <div className="featured-event container">
-            <input onChange={handleChange} name="featuredEvent" id="featured-event" type="checkbox" placeholder="FEATURED EVENT" />
+            <input onChange={handleChange} value={formState.featuredEvent} name="featuredEvent" id="featured-event" type="checkbox" placeholder="FEATURED EVENT" />
             <label htmlFor="featured-event">This is a Featured Event!</label>
           </div>
           <textarea onChange={handleChange} name="eventDescription" id="event-description" type="text" placeholder="EVENT DESCRIPTION"></textarea>
