@@ -9,7 +9,6 @@ const SinglePost = () => {
         variables: { id: postId }
     });
     const post = data?.post || {};
-
     if(loading) {
         return <div>Loading...</div>;
     }
@@ -27,11 +26,11 @@ const SinglePost = () => {
                                 <p className="genre">{ post.genre }</p>
                                 <p className="city">{ post.city }</p>
                             </div>
-                            <p className="desc">{ post.event_description }</p>
+                            <p className="desc">{ post.eventDescription }</p>
                             <div className="social-btn">
 
                                 <button>
-                                    <i className="bi bi-thumbs-up"></i>{ post.attend_count } attending this event!
+                                    <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
                                 </button>
 
                                 <button className="attend">

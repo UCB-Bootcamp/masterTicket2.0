@@ -19,11 +19,14 @@ export const QUERY_SINGLE_POST = gql`
     post(_id: $id) {
       _id
       date
+      eventDescription
       band
       eventTitle
-      username
       city
       venue
+      attending {
+        _id
+      }
     }
   }
 `;
