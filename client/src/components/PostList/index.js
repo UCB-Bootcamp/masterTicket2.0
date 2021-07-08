@@ -37,8 +37,6 @@ const PostList = ({posts}) => {
       </div>
     </section>
   )
-
 }
-
 
 export default PostList;
