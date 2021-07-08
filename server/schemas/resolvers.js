@@ -1,6 +1,7 @@
 const { Post, User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } =require('../utils/auth');
+const fetch = require('node-fetch');
 
 const resolvers = {
     Query: {
@@ -10,6 +11,10 @@ const resolvers = {
         },
         post: async (_, { _id }) => {
             return Post.findOne( { _id });
+        },
+        featuredEvent: async (_, { featuredEvent }) => {
+            const params = featuredEvent ? { featuredEvent } : {};
+            return Post.find(params);
         },
         users: async () => {
             return User.find()
@@ -71,6 +76,13 @@ const resolvers = {
         },
         createPost: async (_, args, context) => {
             if(context.user) {
+                const ticketmasterApiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?&apikey=${process.env.TICKETMASTER_API_KEY}&keyword=${args.eventTitle}`;
+                console.log(ticketmasterApiUrl);
+                const response = await fetch(ticketmasterApiUrl);
+                const data = await response.json();
+	            const eventImage = data._embedded.events[0].images[1].url;
+                args.image = eventImage;
+
                 const post = await Post.create(args);
 
                 await User.findOneAndUpdate(

@@ -10,11 +10,17 @@ export const QUERY_POSTS = gql`
       username
       city
       venue
+      image
     }
   }
 `;
 
-// export const QUERY_USER = gql`
-//   query user($username: String!) {
-//     _
-//   }
+export const QUERY_FEAT_POSTS = gql`
+  query {
+    featuredEvent(featuredEvent: true) {
+      _id
+      eventTitle
+      image
+    }
+  }
+`;
