@@ -48,11 +48,11 @@ const Login = () => {
 				variables: { ...formState },
 			});
 
-			Auth.login(data.addUser.token);
-		} catch (e) {
-			console.error(e);
-		}
-	};
+      Auth.login(data.createUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
 	return (
 		<div className="container">
@@ -98,7 +98,6 @@ const Login = () => {
 						</div>
 					</div>
 				</div>
-
 
 				<div className="col-md-5 mx-auto">
 					<div id="second">

@@ -10,6 +10,7 @@ export const QUERY_POSTS = gql`
       username
       city
       venue
+      image
     }
   }
 `;
@@ -36,6 +37,7 @@ export const QUERY_FEAT_POSTS = gql`
     featuredEvent(featuredEvent: true) {
       _id
       eventTitle
+      image
     }
   }
 `;

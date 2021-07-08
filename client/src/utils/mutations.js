@@ -33,3 +33,20 @@ export const ATTEND_EVENT = gql`
     }
   }
 `;
+
+export const CREATE_POST = gql`
+mutation createPost($eventTitle: String!, $username: String!, $venue: String!, $city: String!, $band: String!, $genre: String!, $eventDescription: String!, $featuredEvent: Boolean, $date: String!, $image: String) {
+  createPost(eventTitle: $eventTitle, username: $username, venue: $venue, city: $city, band: $band, genre: $genre, eventDescription: $eventDescription, featuredEvent: $featuredEvent, date: $date, image: $image) {
+    eventTitle
+  }
+}
+`;
+
+export const TEST_CREATE_POST = gql`
+  mutation createPost {
+    createPost(eventTitle: "Weezer", username: "squidbeaks", venue: "Santa Barbara Bowl", city: "Santa Barbara", band: "Weezer", genre: "Alternative Rock", eventDescription: "Blah blah blah", featuredEvent: true, date: "Sep 21, 2021") {
+      eventTitle
+      image
+    }
+  }
+`;

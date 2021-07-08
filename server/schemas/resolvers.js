@@ -1,6 +1,7 @@
 const { Post, User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } =require('../utils/auth');
+const fetch = require('node-fetch');
 
 const resolvers = {
     Query: {
@@ -44,8 +45,43 @@ const resolvers = {
             const token = signToken(user);
             return { user, token };
         },
+        updateUser: async (_, args, context) => {
+            // PLAYING WITH VARIABLES!!
+            if(context.user) {
+                const user = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { ...args },
+                    // In use stability and do we want to have an undo?
+                    { new: true, runValidators: true }
+                );
+
+                if(!user) {
+                    throw new AuthenticationError('There is no user with this Email/ID');
+                }
+
+                return user;
+            }
+            throw new AuthenticationError('You need to login to update a user!')
+        },
+        deleteUser: async (_, args, context) => {
+            if(context.user) {
+                const deletedUser = await User.findOneAndDelete(
+                    { _id: context.user._id },
+                    { new: false, runValidators: true }
+                );
+
+                return deletedUser;
+            }
+            throw new AuthenticationError('You need to login to delete a post!');
+        },
         createPost: async (_, args, context) => {
             if(context.user) {
+                const ticketmasterApiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?&apikey=${process.env.TICKETMASTER_API_KEY}&keyword=${args.eventTitle}`;
+                const response = await fetch(ticketmasterApiUrl);
+                const data = await response.json();
+	            const eventImage = data._embedded.events[0].images[1].url;
+                args.image = eventImage;
+
                 const post = await Post.create(args);
 
                 await User.findOneAndUpdate(
