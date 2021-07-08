@@ -1,6 +1,7 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_SINGLE_POST } from '../utils/queries';
+import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
 
 const SinglePost = () => {
@@ -9,9 +10,24 @@ const SinglePost = () => {
         variables: { id: postId }
     });
     const post = data?.post || {};
+    const [attendEvent] = useMutation(ATTEND_EVENT,
+        { variables: { id: postId } }
+    );
     if(loading) {
         return <div>Loading...</div>;
     }
+
+    // handle attend click
+    const handleAttendClick = async () => {
+        try {
+            const updatedEvent = await attendEvent({
+                variables: { postId: postId  }
+            });
+            console.log(updatedEvent)
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     return (
         <section>
@@ -32,8 +48,8 @@ const SinglePost = () => {
                                 <button>
                                     <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
                                 </button>
-
-                                <button className="attend">
+                                {/* if logged in */}
+                                <button className="attend" onClick={handleAttendClick}>
                                     <i className="bi bi-thumbs-up"></i>ATTENDING?
                                 </button>
                             </div>
