@@ -5,7 +5,7 @@ import { CREATE_POST, TEST_CREATE_POST } from '../../utils/mutations';
 const PostForm = () => {
   // needed to create new featuredEvent variable for checkbox
   const [formState, setFormState] = useState({"eventTitle": '', "venue": '', "city": '', "band": '', "genre": '', "date": '', "eventDescription": '' });
-  const [createPost, { error }] = useMutation(TEST_CREATE_POST);
+  const [createPost, { error }] = useMutation(CREATE_POST);
   const [checkBoxState, setCheckBoxState] = useState({"featuredEvent": true});
   const [uncheckBoxState, setUncheckBoxState] = useState({"featuredEvent": false});
   //const [checkBoxState, setCheckBoxState] = useState(true);
@@ -84,18 +84,18 @@ const PostForm = () => {
     try {
       await createPost({
         variables: { 
-          "eventTitle": "Weezer",
-          "username": "squidbeaks",
-          "venue": "Santa Barbara Bowl",
-          "city": "Santa Barbara",
-          "band": "Weezer",
-          "genre": "Alternative Rock",
-          "eventDescription": "Blah blah blah",
-          "featuredEvent": true,
-          "date": "Sep 21, 2021"
-          // ...formState,
+          // "eventTitle": "Rage Against the Machine",
+          // "username": "squidbeaks",
+          // "venue": "Santa Barbara Bowl",
+          // "city": "Santa Barbara",
+          // "band": "Weezer",
+          // "genre": "Alternative Rock",
+          // "eventDescription": "Blah blah blah",
           // "featuredEvent": true,
-          // "username": "squidbeaks"
+          // "date": "Sep 21, 2021"
+          ...formState,
+          "featuredEvent": true,
+          "username": "squidbeaks"
         }
       });
 

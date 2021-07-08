@@ -25,40 +25,11 @@ export const CREATE_USER = gql`
 `;
 
 export const CREATE_POST = gql`
-  mutation createPost(
-    $eventTitle: String!,
-    $username: String!,
-    $venue: String!,
-    $city: String!,
-    $band: String!,
-    $genre: String!,
-    $eventDescription: String!,
-    $featuredEvent: Boolean,
-    $date: String!,
-    $image: String) {
-      createPost(
-        eventTitle: $eventTitle,
-        username: $username,
-        venue: $venue,
-        city: $city,
-        band: $band,
-        genre: $genre,
-        eventDescription: $eventDescription,
-        featuredEvent: true,
-        date: $date,
-        image: $image) {
-          eventTitle
-          username
-          venue
-          city
-          band
-          genre
-          eventDescription
-          featuredEvent
-          date
-          image
-        }
-      }
+mutation createPost($eventTitle: String!, $username: String!, $venue: String!, $city: String!, $band: String!, $genre: String!, $eventDescription: String!, $featuredEvent: Boolean, $date: String!, $image: String) {
+  createPost(eventTitle: $eventTitle, username: $username, venue: $venue, city: $city, band: $band, genre: $genre, eventDescription: $eventDescription, featuredEvent: $featuredEvent, date: $date, image: $image) {
+    eventTitle
+  }
+}
 `;
 
 export const TEST_CREATE_POST = gql`
