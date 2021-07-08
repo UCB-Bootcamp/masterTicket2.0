@@ -5,15 +5,12 @@ import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-
 import Header from './components/Header';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import Featured from './components/Featured';
-
 import Login from './pages/Login';
-
-// import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
 
 const client = new ApolloClient({
   request: operation => {
@@ -31,21 +28,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <body>
-          <div className="flex-column justify-flex-start min-100-vh">
-            <Header />
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/featured" component={Featured} />
-                <Route exact path="/login" component={Login} />
-                {/* <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/post/:id" component={SingleThought} /> */}
-              </Switch>
-            </div>
-            <Footer />
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/featured" component={Featured} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={Dashboard} />
+
+            </Switch>
           </div>
-        </body>
+          <Footer />
+        </div>
       </Router>
     </ApolloProvider>
   );
