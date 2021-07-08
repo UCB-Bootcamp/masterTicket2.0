@@ -8,8 +8,7 @@ const SinglePost = () => {
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId }
     });
-    const post = data || {};
-    console.log(post);
+    const post = data?.post || {};
 
     if(loading) {
         return <div>Loading...</div>;
@@ -21,7 +20,7 @@ const SinglePost = () => {
                 <div className="main-post">
                     <div className="post-left">
                         <div className="post-details">
-                            <h1>{ post.eventTitle }</h1>
+                            <h1>{post.eventTitle}</h1>
                             <div className="post-cat">
                                 <p className="venue">{post.venue}</p>
                                 <p className="date">{ post.date }</p>
