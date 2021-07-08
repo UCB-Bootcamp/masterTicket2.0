@@ -56,19 +56,19 @@ const Login = () => {
   };
 
 	return (
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5 mx-auto">
+		<div className="container">
+			<div className="row">
+				<div className="col-md-5 mx-auto">
 					<div id="first">
-						<div class="myform form login-form">
-							<div class="logo mb-3">
-								<div class="col-md-12 text-center">
+						<div className="myform form login-form">
+							<div className="logo mb-3">
+								<div className="col-md-12 text-center">
 									<h1>Login</h1>
 								</div>
 							</div>
-							<form onSubmit={handleFormSubmit} method="post" name="login" class="login-form">
-								<div class="form-group">
-									<label for="email-login">Email address</label>
+							<form onSubmit={handleFormSubmit} method="post" name="login" className="login-form">
+								<div className="form-group">
+									<label htmlFor="email-login">Email address</label>
 									<input
 										type="email"
 										name="email"
@@ -79,8 +79,8 @@ const Login = () => {
 										placeholder="Enter email"
 									/>
 								</div>
-								<div class="form-group">
-									<label for="password-login">Password</label>
+								<div className="form-group">
+									<label htmlFor="password-login">Password</label>
 									<input
 										type="password"
 										name="password"
@@ -92,8 +92,8 @@ const Login = () => {
 										onChange={handleChange}
 									/>
 								</div>
-								<div class="col-md-12 text-center mb-3 social-btn">
-									<button type="submit" class="" id="btn-login">Login</button>
+								<div className="col-md-12 text-center mb-3 social-btn">
+									<button type="submit" className="" id="btn-login">Login</button>
 								</div>
 							</form>
 						</div>
@@ -101,17 +101,17 @@ const Login = () => {
 				</div>
 	
 
-				<div class="col-md-5 mx-auto">
+				<div className="col-md-5 mx-auto">
 					<div id="second">
-						<div class="myform form signup-form">
-							<div class="logo mb-3">
-								<div class="col-md-12 text-center">
+						<div className="myform form signup-form">
+							<div className="logo mb-3">
+								<div className="col-md-12 text-center">
 									<h1>Signup</h1>
 								</div>
 							</div>
 							<form onSubmit={handleSignupSubmit} action="#" name="registration">
-								<div class="form-group">
-									<label for="email-signup">Email</label>
+								<div className="form-group">
+									<label htmlFor="email-signup">Email</label>
 									<input
 										type="email"
 										name="email"
@@ -122,32 +122,32 @@ const Login = () => {
 										onChange={handleChange}
 									/>
 								</div>
-								<div class="form-group">
-									<label for="username-signup">Username</label>
+								<div className="form-group">
+									<label htmlFor="username-signup">Username</label>
 									<input
 										type="username"
 										name="username"
-										class="form-control"
+										className="form-control"
 										id="username-signup"
 										placeholder="Enter Username"
 										value={formState.username}
 										onChange={handleChange}
 									/>
 								</div>
-								<div class="form-group">
-									<label for="password-signup">Password</label>
+								<div className="form-group">
+									<label htmlFor="password-signup">Password</label>
 									<input
 										type="password"
 										name="password"
 										id="password-signup"
-										class="form-control"
+										className="form-control"
 										placeholder="Enter Password"
 										value={formState.passwordSignup}
 										onChange={handleChange}
 									/>
 								</div>
-								<div class="col-md-12 text-center mb-3 social-btn">
-									<button type="submit" class="">Get Started For
+								<div className="col-md-12 text-center mb-3 social-btn">
+									<button type="submit" className="">Get Started For
 										Free</button>
 								</div>
 							</form>

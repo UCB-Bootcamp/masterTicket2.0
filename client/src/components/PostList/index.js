@@ -26,14 +26,11 @@ const PostList = ({posts}) => {
             <div className="card-info">
               <span className="card-category">{ post.band }</span>
               <h3 className="card-title">{ post.eventTitle }</h3>
-              <span className="card-by">at <a href="#" className="card-author" title="author">{ post.venue }</a></span>
             </div>
           </article>
       ))}
     </div>
   )
-
 }
-
 
 export default PostList;
