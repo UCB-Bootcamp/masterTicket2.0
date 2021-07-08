@@ -44,7 +44,7 @@ export const CREATE_POST = gql`
         band: $band,
         genre: $genre,
         eventDescription: $eventDescription,
-        featuredEvent: $featuredEvent,
+        featuredEvent: true,
         date: $date,
         image: $image) {
           eventTitle
@@ -54,9 +54,18 @@ export const CREATE_POST = gql`
           band
           genre
           eventDescription
-          featureEvent
+          featuredEvent
           date
           image
         }
       }
+`;
+
+export const TEST_CREATE_POST = gql`
+  mutation createPost {
+    createPost(eventTitle: "Weezer", username: "squidbeaks", venue: "Santa Barbara Bowl", city: "Santa Barbara", band: "Weezer", genre: "Alternative Rock", eventDescription: "Blah blah blah", featuredEvent: true, date: "Sep 21, 2021") {
+      eventTitle
+      image
+    }
+  }
 `;

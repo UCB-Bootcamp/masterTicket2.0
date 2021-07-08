@@ -24,6 +24,7 @@
   "homepage": "https://github.com/UCB-Bootcamp/masterTicket2.0#readme",
   "dependencies": {
     "concurrently": "^6.2.0",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "react-advanced-form-addons": "^1.3.3"
   }
 }
