@@ -14,6 +14,8 @@ export const QUERY_POSTS = gql`
   }
 `;
 
+
+
 export const QUERY_FEAT_POSTS = gql`
   query {
     featuredEvent(featuredEvent: true) {
