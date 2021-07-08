@@ -10,9 +10,19 @@ const SinglePost = () => {
         variables: { id: postId }
     });
     const post = data?.post || {};
-    const [attendEvent] = useMutation(ATTEND_EVENT,
-        { variables: { id: postId } }
-    );
+    const [attendEvent] = useMutation(ATTEND_EVENT, {
+        variables: { id: postId }, 
+        update(cache, { data: { attend } }) {
+            console.log('attending', attend );
+            const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
+            console.log('readQuery data ', data);
+            cache.writeQuery({
+                query: QUERY_SINGLE_POST,
+                data: { data: { ...data } } 
+            })
+            console.log (data);
+        },
+    });
     if(loading) {
         return <div>Loading...</div>;
     }
@@ -23,7 +33,7 @@ const SinglePost = () => {
             const updatedEvent = await attendEvent({
                 variables: { postId: postId  }
             });
-            console.log(updatedEvent)
+            console.log(updatedEvent.data.attend.attending.length)
         } catch (e) {
             console.error(e);
         }
@@ -48,7 +58,7 @@ const SinglePost = () => {
                                 <button>
                                     <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
                                 </button>
-                                {/* if logged in */}
+                                {/* if logged in && not already attending */}
                                 <button className="attend" onClick={handleAttendClick}>
                                     <i className="bi bi-thumbs-up"></i>ATTENDING?
                                 </button>
