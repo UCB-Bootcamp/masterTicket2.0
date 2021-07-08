@@ -1,6 +1,7 @@
 import React from 'react';
 import { QUERY_FEAT_POSTS } from '../../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Featured = () => {
 

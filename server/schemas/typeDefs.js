@@ -13,7 +13,7 @@ const typeDefs = gql`
         eventDescription: String!
         featuredEvent: Boolean
         date: String!
-        image: String!
+        image: String
         attending: [User]
     }
 
@@ -37,9 +37,11 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!) : Auth
         createUser(username: String!, email: String!, password: String!) : Auth
-        createPost(username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
+        createPost(username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String) : Post
         updatePost(postId: ID!, username: String!, eventTitle: String!, venue: String!, city: String!, band: String!, genre: String!, eventDescription: String!, featuredEvent: Boolean, date: String!, image: String!) : Post
+        updateUser(username: String!, email: String!, password: String!) : User
         deletePost(postId: ID!) : Post
+        deleteUser(username: String!) : User
         attend(postId: ID!) : Post
     }
     
