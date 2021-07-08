@@ -36,7 +36,6 @@ function App() {
               <Route exact path="/featured" component={Featured} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard" component={Dashboard} />
-
             </Switch>
           </div>
           <Footer />
