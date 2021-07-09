@@ -28,35 +28,6 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
-                        <div className="row">
-                            <div className="col-md-6 px-4">
-                                <h6> dive deeper</h6>
-                                <ul>
-                                    <li> <a href="#"> home</a> </li>
-                                    <li> <a href="#"> about</a> </li>
-                                    <li> <a href="#"> services</a> </li>
-                                    <li> <a href="#"> team</a> </li>
-                                    <li> <a href="#"> help</a> </li>
-                                    <li> <a href="#"> contact</a> </li>
-                                </ul>
-                            </div>
-                            <div className="col-md-6 ">
-                                <h6> news & social</h6>
-                                <div className="social">
-                                    <div className="row">
-                                        <a href="#"><i className="bi bi-facebook"></i></a>
-                                    </div>
-                                    <div className="row">
-                                        <a href="#"><i className="bi bi-twitter"></i></a>
-                                    </div>
-                                    <div className="row">
-                                        <a href="#"><i className="bi bi-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </footer>

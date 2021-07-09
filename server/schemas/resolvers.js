@@ -77,7 +77,6 @@ const resolvers = {
         createPost: async (_, args, context) => {
             if(context.user) {
                 const ticketmasterApiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?&apikey=${process.env.TICKETMASTER_API_KEY}&keyword=${args.eventTitle}`;
-                console.log(ticketmasterApiUrl);
                 const response = await fetch(ticketmasterApiUrl);
                 const data = await response.json();
 	            const eventImage = data._embedded.events[0].images[1].url;
@@ -124,12 +123,12 @@ const resolvers = {
             if(context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { attending: context.user._id } },
+                    { $addToSet: { attending: context.user._id } },
                     { new: true, runValidators: true }
                 );
-                const updatedUser = await User.findOneAndUpdate(
+                await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $push: { attending: postId } },
+                    { $addToSet: { attending: postId } },
                     { new: true, runValidators: true }
                 );
                 return updatedPost;
