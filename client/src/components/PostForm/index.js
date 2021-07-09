@@ -64,7 +64,6 @@ const PostForm = () => {
           <input onChange={handleChange} value={formState.date} name="date" id="date" type="text" placeholder="DATE (ex. Oct 21, 2025)" />
           <div className="featured-event container">
             <input onClick={handleCheckBoxClick} label="checkbox" name="featuredEvent" id="featured-event" type="checkbox" placeholder="FEATURED EVENT" />
-            {/* <p>Is "Value 1" checked? {checkBoxState.toString()}</p> */}
             <label htmlFor="featured-event">This is a Featured Event!</label>
           </div>
           <textarea onChange={handleChange} name="eventDescription" id="event-description" type="text" placeholder="EVENT DESCRIPTION"></textarea>
