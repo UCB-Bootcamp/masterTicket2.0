@@ -6,48 +6,47 @@ import Auth from '../utils/auth';
 
 const Login = () => {
 	const [formState, setFormState] = useState({ "email": '', "password": '' });
-  const [login, { error }] = useMutation(LOGIN_USER);
+	const [login, { error }] = useMutation(LOGIN_USER);
 	const [createUser] = useMutation(CREATE_USER);
 
-  const handleChange = event => {
-    const { name, value } = event.target;
+	const handleChange = event => {
+		const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
-      [name]: value
-    });
-  };
+		setFormState({
+			...formState,
+			[name]: value
+		});
+	};
 
-  // submit form
-  const handleFormSubmit = async event => {
-    event.preventDefault();
+	// submit form
+	const handleFormSubmit = async event => {
+		event.preventDefault();
 
-    try {
-      const { data } = await login({
-        variables: { ...formState }
-      });
+		try {
+			const { data } = await login({
+				variables: { ...formState }
+			});
+			Auth.login(data.login.token);
+		} catch (e) {
+			console.error(e);
+		}
 
-      Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-    }
-
-    // clear form values
-    setFormState({
-      emailLogin: '',
-      passwordLogin: '',
+		// clear form values
+		setFormState({
+			emailLogin: '',
+			passwordLogin: '',
 			emailSignup: '',
 			passwordSignup: ''
-    });
-  };
+		});
+	};
 
 	const handleSignupSubmit = async (event) => {
-    event.preventDefault();
+		event.preventDefault();
 
-    try {
-      const { data } = await createUser({
-        variables: { ...formState },
-      });
+		try {
+			const { data } = await createUser({
+				variables: { ...formState },
+			});
 
       Auth.login(data.createUser.token);
     } catch (e) {
@@ -88,7 +87,7 @@ const Login = () => {
 										className="form-control"
 										placeholder="Enter Password"
 										value={formState.passwordLogin
-									}
+										}
 										onChange={handleChange}
 									/>
 								</div>
@@ -99,7 +98,6 @@ const Login = () => {
 						</div>
 					</div>
 				</div>
-	
 
 				<div className="col-md-5 mx-auto">
 					<div id="second">

@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Footer from './components/Footer';
 import Featured from './components/Featured';
 import Login from './pages/Login';
+import SinglePost from './pages/SinglePost';
 import Dashboard from './pages/Dashboard';
 
 const client = new ApolloClient({
@@ -35,8 +36,8 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/featured" component={Featured} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/post/:id" component={SinglePost} /> 
               <Route exact path="/dashboard" component={Dashboard} />
-
             </Switch>
           </div>
           <Footer />

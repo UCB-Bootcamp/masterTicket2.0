@@ -6,13 +6,11 @@ import { useQuery } from '@apollo/react-hooks';
 const Home = () => {
   const { data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
-  // console.log('posts', posts);
 
   return (
     <main>
       <PostList 
         posts={posts}
-        title = "==new events=="
       />
     </main>
 
