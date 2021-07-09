@@ -41,3 +41,29 @@ export const QUERY_FEAT_POSTS = gql`
     }
   }
 `;
+
+export const GET_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      posts {
+        eventTitle
+        venue
+        date
+        _id
+        band
+        image
+      }
+      attending{
+        eventTitle
+        venue
+        date
+        _id
+        band
+        image
+      }
+    }
+  }
+`;

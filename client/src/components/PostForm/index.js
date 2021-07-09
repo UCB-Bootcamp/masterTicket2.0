@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { CREATE_POST, TEST_CREATE_POST } from '../../utils/mutations';
+import { CREATE_POST } from '../../utils/mutations';
 
 const PostForm = () => {
   // needed to create new featuredEvent variable for checkbox
