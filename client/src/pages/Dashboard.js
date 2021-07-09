@@ -11,9 +11,6 @@ const Dashboard = () => {
   const { loading, data } = useQuery(GET_ME);
   
   const meData = data?.me || {}
-  if(meData) {
-    console.log(meData);
-  }
 
   return (
     <>
