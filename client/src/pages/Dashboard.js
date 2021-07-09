@@ -6,7 +6,6 @@ import PostForm from '../components/PostForm';
 import AttendingList from '../components/AttendingList';
 
 const Dashboard = () => {
-  const [userData, setUserData] = useState()
   // we need a get Me query
   const { loading, data } = useQuery(GET_ME);
   
