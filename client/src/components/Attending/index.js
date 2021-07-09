@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Attending = () => {
+const Attending = ({ events }) => {
     // if not attending events
-    // if() {
-    //     return <p className="plans">You're not attending any events yet :(</p>;
-    // }
+    if(!events.length) {
+        return <p className="plans">You're not attending any events yet :(</p>;
+    }
 
     return (
         // if attending events return PostList of Events youre attending
-        <p className="plans">You're not attending any events yet :(</p>
+        <p className="plans">hi</p>
     );
 };
 
