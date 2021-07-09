@@ -11,6 +11,10 @@ const Dashboard = () => {
   const { loading, data } = useQuery(GET_ME);
   
   const meData = data?.me || {}
+  const loggedIn = Auth.loggedIn();
+  if(!loggedIn) {
+    window.location.assign('/login');
+  }
 
   return (
     <>
