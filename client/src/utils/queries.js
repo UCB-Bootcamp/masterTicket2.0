@@ -53,16 +53,16 @@ export const GET_ME = gql`
         venue
         date
         _id
-        username
-        createdAt
+        band
+        image
       }
       attending{
         eventTitle
         venue
         date
         _id
-        username
-        createdAt
+        band
+        image
       }
     }
   }
