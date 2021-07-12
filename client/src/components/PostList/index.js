@@ -9,7 +9,7 @@ const PostList = ({ posts }) => {
     <>
       { posts &&
       posts.map((post, i) => (
-        <article className="card" key={i}>
+        <article className="card" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
           <div className="card-info-hover">
             <i className="bi bi-heart"></i>
             <div className="card-clock-info">
