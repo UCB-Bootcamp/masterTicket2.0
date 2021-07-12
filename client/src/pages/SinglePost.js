@@ -7,21 +7,22 @@ import { useParams } from 'react-router-dom';
 const SinglePost = () => {
     const { id: postId } = useParams();
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-        variables: { id: postId }
+        variables: { id: postId },
+        fetchPolicy: "network-only"
     });
     const post = data?.post || {};
     const [attendEvent] = useMutation(ATTEND_EVENT, {
         variables: { id: postId }, 
-        // update(cache, { data: { attend } }) {
-        //     console.log('attending', attend );
-        //     const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
-        //     console.log('readQuery data ', data);
-        //     cache.writeQuery({
-        //         query: QUERY_SINGLE_POST,
-        //         data: { data: { ...data } } 
-        //     })
-        //     console.log (data);
-        // },
+        update(cache, { data: { attend } }) {
+            console.log('attending', attend );
+            const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
+            console.log('readQuery data ', data);
+            cache.writeQuery({
+                query: QUERY_SINGLE_POST,
+                data: { data: { ...data } } 
+            })
+            console.log (data);
+        },
     });
     if(loading) {
         return <div>Loading...</div>;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
@@ -7,7 +7,7 @@ import AttendingList from '../components/AttendingList';
 
 const Dashboard = () => {
   // we need a get Me query
-  const { loading, data } = useQuery(GET_ME);
+  const { data } = useQuery(GET_ME);
   
   const meData = data?.me || {}
   const loggedIn = Auth.loggedIn();
