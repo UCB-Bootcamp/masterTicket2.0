@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
@@ -67,7 +67,7 @@ const SinglePost = () => {
                     </div>
                     <div className="post-right">
                         <div className="img-container">
-                            <img src={ post.image } alt="" />
+                            <img src={ post.image } alt= {post.eventTitle} />
                         </div>
                     </div>
                 </div>
