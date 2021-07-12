@@ -6,7 +6,7 @@ const Attend = ({ events }) => {
         <>
             {events &&
                 events.map((event, i) => (
-                    <article className="card">
+                    <article className="card" key={i}>
                         <div className="card-info-hover">
                             <i className="bi bi-heart"></i>
                             <div className="card-clock-info">

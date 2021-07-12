@@ -19,7 +19,7 @@ const Dashboard = () => {
     <>
       <PostForm />
       <section className="container">
-        <h5 class="main-title text-center">--Your Plans--</h5>
+        <h5 className="main-title text-center">--Your Plans--</h5>
         <AttendingList events={meData.attending}/>
       </section>
     </>
