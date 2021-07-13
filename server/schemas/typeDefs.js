@@ -5,7 +5,7 @@ const typeDefs = gql`
         _id: ID
         eventTitle: String!
         createdAt: String
-        username: String!
+        username: String
         venue: String!
         city: String!
         band: String!
@@ -22,11 +22,12 @@ const typeDefs = gql`
         username: String!
         email: String!
         password: String!
-        posts: Post
+        posts: [Post]
         attending: [Post]
     }
 
     type Query {
+        me: User
         posts: [Post]
         post(_id: ID!): Post
         featuredEvent(featuredEvent: Boolean): [Post]

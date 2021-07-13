@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
@@ -7,21 +7,22 @@ import { useParams } from 'react-router-dom';
 const SinglePost = () => {
     const { id: postId } = useParams();
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-        variables: { id: postId }
+        variables: { id: postId },
+        fetchPolicy: "network-only"
     });
     const post = data?.post || {};
     const [attendEvent] = useMutation(ATTEND_EVENT, {
         variables: { id: postId }, 
-        // update(cache, { data: { attend } }) {
-        //     console.log('attending', attend );
-        //     const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
-        //     console.log('readQuery data ', data);
-        //     cache.writeQuery({
-        //         query: QUERY_SINGLE_POST,
-        //         data: { data: { ...data } } 
-        //     })
-        //     console.log (data);
-        // },
+        update(cache, { data: { attend } }) {
+            console.log('attending', attend );
+            const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
+            console.log('readQuery data ', data);
+            cache.writeQuery({
+                query: QUERY_SINGLE_POST,
+                data: { data: { ...data } } 
+            })
+            console.log (data);
+        },
     });
     if(loading) {
         return <div>Loading...</div>;
@@ -67,7 +68,7 @@ const SinglePost = () => {
                     </div>
                     <div className="post-right">
                         <div className="img-container">
-                            <img src={ post.image } alt="" />
+                            <img src={ post.image } alt= {post.eventTitle} />
                         </div>
                     </div>
                 </div>
