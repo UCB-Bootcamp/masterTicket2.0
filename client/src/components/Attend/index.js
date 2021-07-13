@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Attend = ({ events }) => {
-
+console.log('events', {events});
     return (
         <>
             {events &&

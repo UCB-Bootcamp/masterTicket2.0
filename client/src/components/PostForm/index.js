@@ -21,7 +21,7 @@ const PostForm = () => {
   const handleCheckBoxClick = () => {
     setCheckBoxState(!checkBoxState);
 
-    console.log(!checkBoxState);
+    // console.log(!checkBoxState);
   }
 
   const handleSubmit = async e => {

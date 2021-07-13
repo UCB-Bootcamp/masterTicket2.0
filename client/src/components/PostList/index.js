@@ -4,7 +4,7 @@ const PostList = ({ posts }) => {
   if (!posts.length) {
     return <h3>No posts yet!</h3>
   }
-
+console.log('posts', posts);
   return (
     <>
       { posts &&
