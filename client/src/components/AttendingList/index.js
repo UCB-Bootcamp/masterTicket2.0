@@ -8,7 +8,7 @@ const AttendingList = (props) => {
     }
     return (
         // if attending events return PostList of Events youre attending
-        <div class="cards col-md-6 col-lg-3 ">
+        <div className="cards col-md-6 col-lg-3 ">
             < Attend events ={events}/>
         </div>
     );

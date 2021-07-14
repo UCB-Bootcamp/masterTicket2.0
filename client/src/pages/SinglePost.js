@@ -1,29 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const SinglePost = () => {
+    const [attendCount, setAttendCount] = useState('');
     const { id: postId } = useParams();
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
         fetchPolicy: "network-only"
     });
-    const post = data?.post || {};
+   const post = data?.post;
+
+    const getPostData = () => {
+        console.log(post)
+        const attendNum = post?.attending?.length;
+        console.log(attendNum)
+        if(attendNum && attendNum !== attendCount) {
+            setAttendCount(attendNum)
+        }
+    };
+
+    getPostData();
+
     const [attendEvent] = useMutation(ATTEND_EVENT, {
         variables: { id: postId }, 
-        update(cache, { data: { attend } }) {
-            console.log('attending', attend );
-            const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
-            console.log('readQuery data ', data);
+        update(cache, { data: { attend: { attending } } }) {
+            const { post } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
             cache.writeQuery({
                 query: QUERY_SINGLE_POST,
-                data: { data: { ...data } } 
+                data: { post: { ...post, attending: attending } } 
             })
-            console.log (data);
         },
     });
+
+    const loggedIn = Auth.loggedIn();
     if(loading) {
         return <div>Loading...</div>;
     }
@@ -34,7 +47,7 @@ const SinglePost = () => {
             const updatedEvent = await attendEvent({
                 variables: { postId: postId  }
             });
-            console.log(updatedEvent.data.attend.attending.length)
+            setAttendCount(updatedEvent.data.attend.attending.length)
         } catch (e) {
             console.error(e);
         }
@@ -57,12 +70,13 @@ const SinglePost = () => {
                             <div className="social-btn">
 
                                 <button>
-                                    <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
+                                    <i className="bi bi-thumbs-up"></i>{ attendCount || 0 } attending this event!
                                 </button>
-                                {/* if logged in && not already attending */}
+                                {loggedIn && (
                                 <button className="attend" onClick={handleAttendClick}>
                                     <i className="bi bi-thumbs-up"></i>ATTENDING?
                                 </button>
+                                )}
                             </div>
                         </div>
                     </div>
