@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/react-hooks';
 const Home = () => {
   const { data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
-
+console.log(posts);
   return (
     <main>
       <section className="container">
