@@ -12,17 +12,18 @@ const SinglePost = () => {
         fetchPolicy: "network-only"
     });
     const post = data?.post || {};
+    console.log('original post', post)
     const [attendEvent] = useMutation(ATTEND_EVENT, {
         variables: { id: postId }, 
-        update(cache, { data: { attend } }) {
-            console.log('attending', attend );
-            const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
-            console.log('readQuery data ', data);
+        update(cache, { data: { attend: { attending } } }) {
+            console.log('attending', attending );
+            const { post } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
+            console.log('readQuery data ', post);
             cache.writeQuery({
                 query: QUERY_SINGLE_POST,
-                data: { data: { ...data } } 
+                data: { data: { ...post, attending:{ attending} } } 
             })
-            console.log (data);
+            console.log ('after', post);
         },
     });
 
@@ -60,7 +61,7 @@ const SinglePost = () => {
                             <div className="social-btn">
 
                                 <button>
-                                    <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
+                                    <i className="bi bi-thumbs-up"></i>{  } attending this event!
                                 </button>
                                 {loggedIn && (
                                 <button className="attend" onClick={handleAttendClick}>
