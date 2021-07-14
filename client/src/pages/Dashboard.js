@@ -21,18 +21,20 @@ const Dashboard = () => {
 // console.log('line 18', {data});
   return (
     <>
-    <section className="container">
-      <div className="row dashboard-posts">
+    <section className="container row dashboard-posts">
+      <div className="col new-post-form">
         <PostForm />
       </div>
-      <div >
+      <div className="new-post-form">
       <MyPosts 
         myPosts={myPosts} 
       />
       </div>
-        <h5 className="main-title text-center">--Your Plans--</h5>
+      
+        
     </section>
     <section className="container">  
+    <h5 className="main-title text-center">--Your Plans--</h5>
       <AttendingList events={meData.attending}/>
     </section>
 
