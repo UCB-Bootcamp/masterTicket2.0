@@ -7,37 +7,35 @@ import AttendingList from '../components/AttendingList';
 import MyPosts from '../components/MyPosts';
 
 const Dashboard = () => {
-  // we need a get Me query
+
   const { data } = useQuery(GET_ME);
-  // console.log('data', data)
   const meData = data?.me || {};
   const myPosts = data?.me.posts;
-  // console.log('myPosts dashboard', myPosts);
-
+  const username = data?.me.username;
   const loggedIn = Auth.loggedIn();
+
   if(!loggedIn) {
     window.location.assign('/login');
   }
-// console.log('line 18', {data});
+
   return (
     <>
-    <section className="container row dashboard-posts">
-      <div className="col new-post-form">
-        <PostForm />
-      </div>
-      <div className="new-post-form">
-      <MyPosts 
-        myPosts={myPosts} 
-      />
-      </div>
-      
-        
-    </section>
-    <section className="container">  
-    <h5 className="main-title text-center">--Your Plans--</h5>
-      <AttendingList events={meData.attending}/>
-    </section>
-
+      <section className="container row dashboard-posts">
+        <div className="col new-post-form">
+          <PostForm 
+            username={username}
+          />
+        </div>
+        <div className="new-post-form">
+        <MyPosts 
+          myPosts={myPosts} 
+        />
+        </div>
+      </section>
+      <section className="container">  
+      <h5 className="main-title text-center">--Your Plans--</h5>
+        <AttendingList events={meData.attending}/>
+      </section>
     </>
   )
 };

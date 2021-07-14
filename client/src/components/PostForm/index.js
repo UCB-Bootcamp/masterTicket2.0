@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_POST } from '../../utils/mutations';
 
-const PostForm = () => {
+const PostForm = ( {username}) => {
   // needed to create new featuredEvent variable for checkbox
   const [formState, setFormState] = useState({"eventTitle": '', "venue": '', "city": '', "band": '', "genre": '', "date": '', "eventDescription": ''});
   const [createPost, { error }] = useMutation(CREATE_POST);
@@ -20,8 +20,6 @@ const PostForm = () => {
 
   const handleCheckBoxClick = () => {
     setCheckBoxState(!checkBoxState);
-
-    // console.log(!checkBoxState);
   }
 
   const handleSubmit = async e => {
@@ -31,7 +29,7 @@ const PostForm = () => {
         variables: { 
           ...formState,
           "featuredEvent": checkBoxState,
-          "username": "tweyel"
+          "username": username
         }
       });
     } catch (e) {
