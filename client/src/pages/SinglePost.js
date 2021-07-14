@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const SinglePost = () => {
     const { id: postId } = useParams();
@@ -24,6 +25,8 @@ const SinglePost = () => {
             console.log (data);
         },
     });
+
+    const loggedIn = Auth.loggedIn();
     if(loading) {
         return <div>Loading...</div>;
     }
@@ -59,10 +62,11 @@ const SinglePost = () => {
                                 <button>
                                     <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
                                 </button>
-                                {/* if logged in && not already attending */}
+                                {loggedIn && (
                                 <button className="attend" onClick={handleAttendClick}>
                                     <i className="bi bi-thumbs-up"></i>ATTENDING?
                                 </button>
+                                )}
                             </div>
                         </div>
                     </div>
