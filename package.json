@@ -23,9 +23,7 @@
   },
   "homepage": "https://github.com/UCB-Bootcamp/masterTicket2.0#readme",
   "dependencies": {
-    "bootstrap": "^5.0.2",
     "concurrently": "^6.2.0",
-    "if-env": "^1.0.4",
-    "react-bootstrap": "^1.6.1"
+    "if-env": "^1.0.4"
   }
 }

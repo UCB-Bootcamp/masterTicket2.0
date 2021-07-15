@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { CREATE_POST } from '../../utils/mutations';
+import { CREATE_POST, TEST_CREATE_POST } from '../../utils/mutations';
 
-const PostForm = ( {username}) => {
+const PostForm = () => {
   // needed to create new featuredEvent variable for checkbox
   const [formState, setFormState] = useState({"eventTitle": '', "venue": '', "city": '', "band": '', "genre": '', "date": '', "eventDescription": ''});
   const [createPost, { error }] = useMutation(CREATE_POST);
@@ -20,6 +20,8 @@ const PostForm = ( {username}) => {
 
   const handleCheckBoxClick = () => {
     setCheckBoxState(!checkBoxState);
+
+    console.log(!checkBoxState);
   }
 
   const handleSubmit = async e => {
@@ -29,7 +31,7 @@ const PostForm = ( {username}) => {
         variables: { 
           ...formState,
           "featuredEvent": checkBoxState,
-          "username": username
+          "username": "tweyel"
         }
       });
     } catch (e) {
@@ -62,6 +64,7 @@ const PostForm = ( {username}) => {
           <input onChange={handleChange} value={formState.date} name="date" id="date" type="text" placeholder="DATE (ex. Oct 21, 2025)" />
           <div className="featured-event container">
             <input onClick={handleCheckBoxClick} label="checkbox" name="featuredEvent" id="featured-event" type="checkbox" placeholder="FEATURED EVENT" />
+            {/* <p>Is "Value 1" checked? {checkBoxState.toString()}</p> */}
             <label htmlFor="featured-event">This is a Featured Event!</label>
           </div>
           <textarea onChange={handleChange} name="eventDescription" id="event-description" type="text" placeholder="EVENT DESCRIPTION"></textarea>
