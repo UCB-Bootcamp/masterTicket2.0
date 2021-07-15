@@ -11,9 +11,10 @@ const Home = () => {
   return (
     <main>
       <section className="container">
-        <div className="row">
-          <h5 className="main-title text-center">--new events--</h5>
-          <div className="cards col-md-6 col-lg-3 ">
+      <h5 className="main-title text-center">--new events--</h5>
+        <div className="">
+          
+          <div >
             <PostList
               posts={posts}
             ></PostList>
