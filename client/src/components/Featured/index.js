@@ -13,8 +13,8 @@ const Featured = () => {
     <section>
       <h5 className="text-center" id="featured">--featured events--</h5>
       <Carousel id="" className="controls" data-ride="carousel">
-        {featuredEvent.map(post => (
-          <Carousel.Item key={post.id} className="w-100">
+        {featuredEvent.map((post, i) => (
+          <Carousel.Item key={i} className="w-100">
             <img
               className="d-block w-100"
               src={post.image}
