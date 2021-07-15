@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/react-hooks';
 
 export const QUERY_POSTS = gql`
   query {
@@ -38,6 +38,32 @@ export const QUERY_FEAT_POSTS = gql`
       _id
       eventTitle
       image
+    }
+  }
+`;
+
+export const GET_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      posts {
+        eventTitle
+        venue
+        date
+        _id
+        band
+        image
+      }
+      attending{
+        eventTitle
+        venue
+        date
+        _id
+        band
+        image
+      }
     }
   }
 `;

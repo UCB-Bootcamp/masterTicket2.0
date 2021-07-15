@@ -1,16 +1,23 @@
 import React from 'react';
 
-const PostList = ({ posts }) => {
-  if (!posts.length) {
-    return <h3>No posts yet!</h3>
-  }
-console.log('posts', posts);
-  return (
-    <div className="card-group">
 
-      { posts &&
-      posts.map((post, i) => (
-        <article className="card " key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
+const MyPosts = ({ myPosts }) => {
+  // if (!myPosts.length) {
+  //   return <h3>You haven't made any posts</h3>
+  // }
+
+// console.log('myPosts myPosts', myPosts)
+
+  return (
+    <>
+    <div className="col card">
+      <h5 className="main-title text-center card-header">--Your Posts--</h5>
+      </div>
+      
+      { myPosts && 
+        myPosts.map((post, i) => (
+
+        <article className="card" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
           <div className="card-info-hover">
             <i className="bi bi-heart"></i>
             <div className="card-clock-info">
@@ -27,13 +34,12 @@ console.log('posts', posts);
           <div className="card-info">
             <span className="card-category">{post.band}</span>
             <h3 className="card-title">{post.eventTitle}</h3>
+            <p>{post.eventDescription}</p>
           </div>
         </article>
       ))}
-
-    </div>
-        
+    </>
   )
 }
 
-export default PostList;
+export default MyPosts;
