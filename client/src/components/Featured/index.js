@@ -8,15 +8,13 @@ const Featured = () => {
 
     const { data } = useQuery(QUERY_FEAT_POSTS);
     const featuredEvent = data?.featuredEvent || [];
-    // console.log('featuredEvent', featuredEvent);
-    // console.log('featuredEvent[0]', featuredEvent[0].image );
 
   return (
     <section>
       <h5 className="text-center" id="featured">--featured events--</h5>
       <Carousel id="" className="controls" data-ride="carousel">
         {featuredEvent.map(post => (
-          <Carousel.Item key={post.id} className="">
+          <Carousel.Item key={post.id} className="w-100">
             <img
               className="d-block w-100"
               src={post.image}
@@ -33,7 +31,6 @@ const Featured = () => {
         ))}
       </Carousel>
     </section>
-
   );
 }
 

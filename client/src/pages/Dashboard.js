@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ME } from '../utils/queries';
-import Auth from '../utils/auth';
+import Auth from '../auth';
 import PostForm from '../components/PostForm';
 import AttendingList from '../components/AttendingList';
 import MyPosts from '../components/MyPosts';
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <section className="container row dashboard-posts">
+      <section className="row dashboard-posts">
         <div className="col new-post-form">
           <PostForm 
             username={username}
