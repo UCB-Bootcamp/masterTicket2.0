@@ -25,6 +25,7 @@ export const QUERY_SINGLE_POST = gql`
       eventTitle
       city
       venue
+      image
       attending {
         _id
       }
@@ -38,6 +39,33 @@ export const QUERY_FEAT_POSTS = gql`
       _id
       eventTitle
       image
+    }
+  }
+`;
+
+export const GET_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      posts {
+        eventTitle
+        eventDescription
+        venue
+        date
+        _id
+        band
+        image
+      }
+      attending{
+        eventTitle
+        venue
+        date
+        _id
+        band
+        image
+      }
     }
   }
 `;

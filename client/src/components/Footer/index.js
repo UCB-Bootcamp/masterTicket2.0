@@ -5,8 +5,8 @@ const Footer = () => {
         <footer>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-8">
-                        <div className="row">
+                    <div className="col-md-6 m-auto">
+                        <div className="row w-100">
                             <div className="col-md-6">
                                 <div className="logo-part">
                                     <h2>masterTicket2.0</h2>

@@ -39,6 +39,8 @@ const SinglePost = () => {
         }
     };
 
+    console.log(post.image);
+
     return (
         <section>
             <div className="wrapper">

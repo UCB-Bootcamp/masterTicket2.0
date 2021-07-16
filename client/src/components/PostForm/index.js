@@ -52,7 +52,7 @@ const PostForm = () => {
   }
   
   return (
-    <div className="col new-post-form card">
+    <div className="col new-post-form card sm-600">
       <h5 className="main-title text-center card-header">Create an Event</h5>
       <div className="col card-body">
         <form className="topBefore form" onSubmit={handleSubmit}>
