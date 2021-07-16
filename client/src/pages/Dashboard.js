@@ -26,7 +26,7 @@ const Dashboard = () => {
             username={username}
           />
         </div>
-        <div className="new-post-form">
+        <div className="col new-post-form">
         <MyPosts 
           myPosts={myPosts} 
         />

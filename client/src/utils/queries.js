@@ -25,6 +25,7 @@ export const QUERY_SINGLE_POST = gql`
       eventTitle
       city
       venue
+      image
       attending {
         _id
       }
@@ -50,6 +51,7 @@ export const GET_ME = gql`
       email
       posts {
         eventTitle
+        eventDescription
         venue
         date
         _id
