@@ -5,9 +5,9 @@ const Footer = () => {
         <footer>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6">
-                        <div className="row">
-                            <div className="col-md-6 ">
+                    <div className="col-md-6 m-auto">
+                        <div className="row w-100">
+                            <div className="col-md-6">
                                 <div className="logo-part">
                                     <h2>masterTicket</h2>
                                     <p>3 Abbey Rd, London NW8 9AY, United Kingdom</p>

@@ -10,10 +10,10 @@ const Header = () => {
     <header>
     <nav className="container">
       <div className="row">
-        <div className="col-10 nav-padded">
-          <div className="row text-center">
+        <div className="col-10 nav-padded m-auto ">
+          <div className="row ">
             <Link to="/">
-              <h1 clas>masterTicket2.0</h1>
+              <h1 className="">masterTicket2.0</h1>
             </Link>
           </div>
           <div className="row d-flex justify-content-around text-center">
