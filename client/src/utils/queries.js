@@ -25,6 +25,7 @@ export const QUERY_SINGLE_POST = gql`
       eventTitle
       city
       venue
+      image
       attending {
         _id
       }
