@@ -1,42 +1,28 @@
-import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import React from 'react';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
-import Auth from '../auth';
 
 const SinglePost = () => {
-    const [attendCount, setAttendCount] = useState('');
     const { id: postId } = useParams();
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-        variables: { id: postId },
-        fetchPolicy: "network-only"
+        variables: { id: postId }
     });
-   const post = data?.post;
-
-    const getPostData = () => {
-        console.log(post)
-        const attendNum = post?.attending?.length;
-        console.log(attendNum)
-        if(attendNum && attendNum !== attendCount) {
-            setAttendCount(attendNum)
-        }
-    };
-
-    getPostData();
-
+    const post = data?.post || {};
     const [attendEvent] = useMutation(ATTEND_EVENT, {
         variables: { id: postId }, 
-        update(cache, { data: { attend: { attending } } }) {
-            const { post } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
-            cache.writeQuery({
-                query: QUERY_SINGLE_POST,
-                data: { post: { ...post, attending: attending } } 
-            })
-        },
+        // update(cache, { data: { attend } }) {
+        //     console.log('attending', attend );
+        //     const { data } = cache.readQuery({ query: QUERY_SINGLE_POST, variables: { id: postId } });
+        //     console.log('readQuery data ', data);
+        //     cache.writeQuery({
+        //         query: QUERY_SINGLE_POST,
+        //         data: { data: { ...data } } 
+        //     })
+        //     console.log (data);
+        // },
     });
-
-    const loggedIn = Auth.loggedIn();
     if(loading) {
         return <div>Loading...</div>;
     }
@@ -47,11 +33,13 @@ const SinglePost = () => {
             const updatedEvent = await attendEvent({
                 variables: { postId: postId  }
             });
-            setAttendCount(updatedEvent.data.attend.attending.length)
+            console.log(updatedEvent.data.attend.attending.length)
         } catch (e) {
             console.error(e);
         }
     };
+
+    console.log(post.image);
 
     return (
         <section>
@@ -70,19 +58,18 @@ const SinglePost = () => {
                             <div className="social-btn">
 
                                 <button>
-                                    <i className="bi bi-thumbs-up"></i>{ attendCount || 0 } attending this event!
+                                    <i className="bi bi-thumbs-up"></i>{ post.attending.length } attending this event!
                                 </button>
-                                {loggedIn && (
+                                {/* if logged in && not already attending */}
                                 <button className="attend" onClick={handleAttendClick}>
                                     <i className="bi bi-thumbs-up"></i>ATTENDING?
                                 </button>
-                                )}
                             </div>
                         </div>
                     </div>
                     <div className="post-right">
                         <div className="img-container">
-                            <img src={ post.image } alt= {post.eventTitle} />
+                            <img src={ post.image } alt="" />
                         </div>
                     </div>
                 </div>

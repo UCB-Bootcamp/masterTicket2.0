@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Auth from '../../auth';
+import Auth from '../../utils/auth';
 const Header = () => {
   const logout = event => {
     event.preventDefault();
@@ -9,11 +9,11 @@ const Header = () => {
   return (
     <header>
     <nav className="container">
-      <div className="row">
-        <div className="col-10 nav-padded">
-          <div className="row text-center">
+      <div className="row ">
+        <div className="col-10 nav-padded m-auto ">
+          <div className="row d-flex justify-content-around text-center">
             <Link to="/">
-              <h1>masterTicket2.0</h1>
+              <h1 className="">masterTicket2.0</h1>
             </Link>
           </div>
           <div className="row d-flex justify-content-around text-center">
