@@ -2,7 +2,7 @@ import React from 'react';
 import { QUERY_FEAT_POSTS } from '../../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel' 
+import Carousel from 'react-bootstrap/Carousel';
 
 const Featured = () => {
 
