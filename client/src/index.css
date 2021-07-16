@@ -602,6 +602,13 @@ stafftion {
         display: block;
         margin-top: 20px;
     }
+    .row {
+        display: block;
+    }
+    .new-post-form {
+        width: auto;
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -622,5 +629,3 @@ stafftion {
         font-size: 18px;
     }
 }
-
-
