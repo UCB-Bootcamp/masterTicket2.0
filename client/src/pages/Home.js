@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <main>
       <section className="container">
-      <h5 className="main-title text-center">--new events--</h5>
+      <h5 className="main-title text-center pb-3">--new events--</h5>
         <div className="">
           
           <div >
@@ -21,7 +21,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section>
+      <section className="pt-4">
         <Featured />
       </section>
     </main >

@@ -13,7 +13,7 @@ const Header = () => {
         <div className="col-10 nav-padded">
           <div className="row text-center">
             <Link to="/">
-              <h1>masterTicket2.0</h1>
+              <h1 clas>masterTicket2.0</h1>
             </Link>
           </div>
           <div className="row d-flex justify-content-around text-center">

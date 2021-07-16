@@ -21,7 +21,7 @@ const Featured = () => {
               alt="..."
             />
             <Carousel.Caption>
-              <div class=" d-none d-md-block">
+              <div className=" d-none d-md-block">
 
             <h3>FEATURED EVENT: {post.eventTitle}</h3>
             <p>Wouldn't you want to join in??</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { CardGroup , Card, Button} from 'react-bootstrap';
 
 const PostList = ({ posts }) => {
   if (!posts.length) {
@@ -6,33 +7,23 @@ const PostList = ({ posts }) => {
   }
 console.log('posts', posts);
   return (
-    <div className="card-group">
 
-      { posts &&
+    <CardGroup className="flex-wrap justify-content-between">
+
+    {posts &&
       posts.map((post, i) => (
-        <article className="card " key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
-          <div className="card-info-hover">
-            <i className="bi bi-heart"></i>
-            <div className="card-clock-info">
-              <i className="bi bi-clock"></i>
-              <span className="card-time">{post.date}</span>
-            </div>
-            <div className="goto">
-              <button> <a href='/post/{ post._id }'>checkout post</a></button>
-            </div>
-          </div>
-          <div className="card-img-hover">
-            <img src={post.image} alt={post.eventTitle} />
-          </div>
-          <div className="card-info">
-            <span className="card-category">{post.band}</span>
-            <h3 className="card-title">{post.eventTitle}</h3>
-          </div>
-        </article>
-      ))}
+        <Card  key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
+          <Card.Body>
+            <Card.Text className="text-center pt-3 pb-3">{post.band}</Card.Text>
+            {/* <Card.Title>{post.eventTitle}</Card.Title> */}
+            <Card.Text className="m-auto float-left">{post.date}</Card.Text>
+          </Card.Body>
+          <Card.Img img src={post.image} alt={post.eventTitle} />
+          <Button variant="dark" className="m-auto float-right"> <a href='/post/{ post._id }'>checkout post</a></Button>
+        </Card>
+    ))}
 
-    </div>
-        
+    </CardGroup>  
   )
 }
 
