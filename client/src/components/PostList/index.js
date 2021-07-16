@@ -8,13 +8,13 @@ const PostList = ({ posts }) => {
 console.log('posts', posts);
   return (
 
-    <CardGroup className="flex-wrap justify-content-between">
+    <CardGroup className="flex-wrap">
 
     {posts &&
       posts.map((post, i) => (
-        <Card key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
+        <Card className="mr-3" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
           <Card.Body>
-            <Card.Text className="text-center pt-3">{post.band}</Card.Text>
+            <Card.Text className="text-center pt-3 font-weight-bold tx-tfm title">{post.band}</Card.Text>
             {/* <Card.Title>{post.eventTitle}</Card.Title> */}
             <Card.Text className="text-center pt-3">{post.date}</Card.Text>
           </Card.Body>
