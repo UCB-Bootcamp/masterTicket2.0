@@ -67,9 +67,9 @@ const PostSchema = new Schema(
     }
 );
 
-PostSchema.virtual('attendCount').get(function() {
-    return this.attending.length
-});
+// PostSchema.virtual('attendCount').get(function() {
+//     return this.attend.length
+// });
 
 const Post = model('Post', PostSchema);
 
