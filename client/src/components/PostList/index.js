@@ -19,7 +19,7 @@ console.log('posts', posts);
               <Card.Text className="text-center pt-3">{post.date}</Card.Text>
             </Card.Body>
             <Card.Img className="card-img-top" src={post.image} alt={post.eventTitle} />
-            <Button variant="secondary" className="m-auto sm-600 md-768"> <a href='/post/{ post._id }'>checkout post</a></Button>
+            <Button variant="secondary" className="m-auto sm-600 md-768 xl-button"> <a href='/post/{ post._id }'>checkout post</a></Button>
           </Card>
       ))}
 

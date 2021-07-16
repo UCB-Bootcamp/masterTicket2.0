@@ -617,5 +617,10 @@ stafftion {
     }
 }
 
+@media only screen and (max-width: 1200px) {
+    .title {
+        font-size: 18px;
+    }
+}
 
 
