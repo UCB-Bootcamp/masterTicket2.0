@@ -9,9 +9,9 @@ const Header = () => {
   return (
     <header>
     <nav className="container">
-      <div className="row">
+      <div className="row ">
         <div className="col-10 nav-padded m-auto ">
-          <div className="row ">
+          <div className="row d-flex justify-content-around text-center">
             <Link to="/">
               <h1 className="">masterTicket2.0</h1>
             </Link>
