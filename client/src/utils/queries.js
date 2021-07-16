@@ -50,6 +50,7 @@ export const GET_ME = gql`
       email
       posts {
         eventTitle
+        eventDescription
         venue
         date
         _id
