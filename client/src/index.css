@@ -367,7 +367,7 @@ nav ul li {
 /* POSTS */
 .main-post {
     color: #323336;
-    min-height: 390px;
+    min-height: 50%;
     margin: 50px auto;
     display: -webkit-box;
     display: -ms-flexbox;
