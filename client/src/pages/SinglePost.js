@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import { ATTEND_EVENT } from '../utils/mutations'
 import { useParams } from 'react-router-dom';
-import Auth from '../auth';
+import Auth from '../utils/auth';
 
 const SinglePost = () => {
     const [attendCount, setAttendCount] = useState('');

@@ -1,6 +1,5 @@
 import React from 'react';
 import Attend from '../Attend';
-
 const AttendingList = (props) => {
     const events = props.events|| {};
     if (!events.length) {
@@ -13,5 +12,4 @@ const AttendingList = (props) => {
         </div>
     );
 };
-
 export default AttendingList;

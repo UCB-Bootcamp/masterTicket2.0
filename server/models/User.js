@@ -27,6 +27,12 @@ const UserSchema = new Schema(
                 ref: 'Post'
             }
         ],
+        friends: [
+            {
+                type: Types.ObjectId,
+                ref: 'User'
+            }
+        ],
         attending: [
             {
                 type: Types.ObjectId,

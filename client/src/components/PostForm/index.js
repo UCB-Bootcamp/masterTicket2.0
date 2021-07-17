@@ -74,6 +74,4 @@ const PostForm = ( {username}) => {
 
   };
 
-
-
 export default PostForm;

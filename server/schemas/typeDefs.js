@@ -16,7 +16,6 @@ const typeDefs = gql`
         image: String
         attending: [User]
     }
-
     type User {
         _id: ID
         username: String!
@@ -25,7 +24,6 @@ const typeDefs = gql`
         posts: [Post]
         attending: [Post]
     }
-
     type Query {
         me: User
         posts: [Post]
@@ -34,7 +32,6 @@ const typeDefs = gql`
         users: [User]
         user(username: String!): User
     }
-
     type Mutation {
         login(email: String!, password: String!) : Auth
         createUser(username: String!, email: String!, password: String!) : Auth

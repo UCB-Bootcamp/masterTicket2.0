@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Attend = ({ events }) => {
 console.log('events', {events});
     return (
@@ -32,7 +31,5 @@ console.log('events', {events});
                 ))}
         </>
     );
-
 };
-
 export default Attend;

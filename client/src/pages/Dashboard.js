@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ME } from '../utils/queries';
-import Auth from '../auth';
+import Auth from '../utils/auth';
 import PostForm from '../components/PostForm';
 import AttendingList from '../components/AttendingList';
 import MyPosts from '../components/MyPosts';
@@ -9,6 +9,7 @@ import MyPosts from '../components/MyPosts';
 const Dashboard = () => {
 
   const { data } = useQuery(GET_ME);
+  console.log('data', data);
   const meData = data?.me || {};
   const myPosts = data?.me.posts;
   const username = data?.me.username;
