@@ -6,7 +6,7 @@ const MyPosts = ({ myPosts }) => {
   //   return <h3>You haven't made any posts</h3>
   // }
 
-  console.log('myPosts myPosts', myPosts);
+  // console.log('myPosts myPosts', myPosts);
   // console.log(myPosts.eventDescription);
 
   return (

@@ -9,6 +9,7 @@ import MyPosts from '../components/MyPosts';
 const Dashboard = () => {
 
   const { data } = useQuery(GET_ME);
+  console.log('data', data);
   const meData = data?.me || {};
   const myPosts = data?.me.posts;
   const username = data?.me.username;

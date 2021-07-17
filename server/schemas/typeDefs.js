@@ -5,7 +5,7 @@ const typeDefs = gql`
         _id: ID
         eventTitle: String!
         createdAt: String
-        username: String!
+        username: String
         venue: String!
         city: String!
         band: String!
@@ -16,24 +16,22 @@ const typeDefs = gql`
         image: String
         attending: [User]
     }
-
     type User {
         _id: ID
         username: String!
         email: String!
         password: String!
-        posts: Post
+        posts: [Post]
         attending: [Post]
     }
-
     type Query {
+        me: User
         posts: [Post]
         post(_id: ID!): Post
         featuredEvent(featuredEvent: Boolean): [Post]
         users: [User]
         user(username: String!): User
     }
-
     type Mutation {
         login(email: String!, password: String!) : Auth
         createUser(username: String!, email: String!, password: String!) : Auth
