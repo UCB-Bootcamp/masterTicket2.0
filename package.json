@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/UCB-Bootcamp/masterTicket2.0#readme",
   "dependencies": {
+    "@material-ui/icons": "^4.11.2",
     "concurrently": "^6.2.0",
     "if-env": "^1.0.4"
   }
