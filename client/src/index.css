@@ -34,7 +34,7 @@ a:hover {
     width: 100%;
     position: relative;
     overflow: hidden;
-    margin: auto;
+    margin: 15px;
 }
 
 .card:hover {
@@ -128,6 +128,12 @@ a:hover {
     position: absolute;
     height: 235px;
     top: 0;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
 
 .card-info {
@@ -316,6 +322,10 @@ footer .social-btn button {
     text-transform:uppercase;
 }
 
+.title {
+    font-size: 20px;
+}
+
 form .error {
     color: #ff0000;
 }
@@ -357,7 +367,7 @@ nav ul li {
 /* POSTS */
 .main-post {
     color: #323336;
-    min-height: 390px;
+    min-height: 50%;
     margin: 50px auto;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -554,7 +564,7 @@ stafftion {
 /* DASHBOARD */
 
 .new-post-form {
-    width: 50%;
+    width: 100%;
 }
 
 .topBefore input {
@@ -580,4 +590,42 @@ stafftion {
     display: flex;
     justify-content: center;
     
+}
+
+.w-100 {
+    width: 100% !important;
+    /* height: 75vh; */
+  }
+
+@media only screen and (max-width: 600px) {
+    .sm-600 {
+        display: block;
+        margin-top: 20px;
+    }
+    .row {
+        display: block;
+    }
+    .new-post-form {
+        width: auto;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .md-768 {
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .title {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .title {
+        font-size: 18px;
+    }
 }
