@@ -5,6 +5,16 @@ const fetch = require('node-fetch');
 
 const resolvers = {
     Query: {
+        me: async (_, args, context) => {
+            if(context.user) {
+                const userData = await User.findOne({ _id: context.user._id })
+                    .select('-__v -password')
+                    .populate('posts')
+                    .populate('attending');
+                return userData;
+            }
+            throw new AuthenticationError('Not logged in');
+        },
         posts: async (_, { username }) => {
             const params = username ? { username } : {};
             return Post.find(params);
