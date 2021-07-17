@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardGroup , Card, Button} from 'react-bootstrap';
 
-const PostList = ({posts}) => {
+const PostList = ({ posts }) => {
   if (!posts.length) {
     return <h3>No posts yet!</h3>
   }

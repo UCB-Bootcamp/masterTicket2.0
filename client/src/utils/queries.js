@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/react-hooks';
 
 export const QUERY_POSTS = gql`
   query {
