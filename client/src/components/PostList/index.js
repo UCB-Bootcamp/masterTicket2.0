@@ -8,40 +8,22 @@ const PostList = ({ posts }) => {
 
   return (
     
-    // <CardGroup className=" sm-600 md-768">
-
-    //   {posts &&
-    //     posts.map((post, i) => (
-    //       <Card className="mr-3 sm-600 md-768 " key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
-    //         <Card.Body className="lg-992">
-    //           <Card.Text className="text-center pt-3 font-weight-bold tx-tfm title">{post.band}</Card.Text>
-    //           {/* <Card.Title>{post.eventTitle}</Card.Title> */}
-    //           <Card.Text className="text-center pt-3">{post.date}</Card.Text>
-    //         </Card.Body>
-    //         <Card.Img className="card-img-top" src={post.image} alt={post.eventTitle} />
-    //         <Button variant="secondary" className="m-auto sm-600 md-768 xl-button" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</Button>
-    //       </Card>
-    //   ))}
-
-    // </CardGroup>  
-    <Container className="container " >
-      <Row className="postListContainer">
-        {/* <Col className="" > */}
-          {posts &&
-            posts.map((post, i) => (
-              <Card className="col-6 col-md-4 justify-content-around m-auto postList" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
-                <Card.Body className="">
-                  <Card.Text className="">{post.band}</Card.Text>
-                  {/* <Card.Title>{post.eventTitle}</Card.Title> */}
-                  <Card.Text className="">{post.date}</Card.Text>
-                </Card.Body>
-                <Card.Img className="" src={post.image} alt={post.eventTitle} />
-                <Button variant="secondary" className="" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</Button>
-              </Card>
-          ))}
-          {/* </Col> */}
-      </Row>
-    </Container>  
+    <div class="card-group d-flex container">
+      <div class="row">
+      {posts &&
+        posts.map((post, i) => (
+          <div class="card col-6 col-md-4 m-auto" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
+            <div class="card-body">
+              <h5 class="card-title">{post.band}</h5>
+              {/* <Card.Title>{post.eventTitle}</Card.Title> */}
+              <p class="card-text">{post.date}</p>
+            </div>
+            <img class="card-img-top" src={post.image} alt={post.eventTitle} />
+            <button variant="secondary" class="" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</button>
+          </div>
+      ))}
+      </div>
+    </div>  
   )
 }
 
