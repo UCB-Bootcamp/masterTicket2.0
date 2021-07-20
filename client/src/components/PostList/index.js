@@ -1,5 +1,4 @@
 import React from 'react';
-import {Card, Button, Row, Col, Container} from 'react-bootstrap';
 
 const PostList = ({ posts }) => {
   if (!posts.length) {
@@ -9,17 +8,16 @@ const PostList = ({ posts }) => {
   return (
     
     <div class="card-group d-flex container">
-      <div class="row">
+      <div class="row ">
       {posts &&
         posts.map((post, i) => (
-          <div class="card col-6 col-md-4 m-auto" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
-            <div class="card-body">
+          <div class="card col-6 col-md-4 m-auto pb-3" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
+            <div class="card-body ">
               <h5 class="card-title">{post.band}</h5>
-              {/* <Card.Title>{post.eventTitle}</Card.Title> */}
               <p class="card-text">{post.date}</p>
             </div>
-            <img class="card-img-top" src={post.image} alt={post.eventTitle} />
-            <button variant="secondary" class="" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</button>
+            <img class="card-img-top mb-3" src={post.image} alt={post.eventTitle} />
+            <button type="button" variant="secondary" class="btn btn-light btn-sm" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</button>
           </div>
       ))}
       </div>
