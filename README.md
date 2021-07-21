@@ -1,7 +1,7 @@
 # masterTicket2.0
 
   ## Description
-  This application was created to connect music lovers and display local music events.
+  This application was created to connect music lovers and display local music events. masterTicket2.0 is a refactor of our original masterTicket group project. masterTicket2.0 uses the MERN stack to provide a forum-like site where a user can post musical events and mark an event as something they are attending. Users also have a dashboard where they can see all of the events that they've posted as well as the one that are attending.
 
   ## Table of Contents
 
