@@ -15,9 +15,9 @@ const SinglePost = () => {
    const post = data?.post;
 
     const getPostData = () => {
-        console.log(post)
+        // console.log('post', post)
         const attendNum = post?.attending?.length;
-        console.log(attendNum)
+        // console.log('attendNum', attendNum)
         if(attendNum && attendNum !== attendCount) {
             setAttendCount(attendNum)
         }
@@ -53,7 +53,7 @@ const SinglePost = () => {
         }
     };
 
-    console.log(post.image);
+    // console.log(post.image);
 
     return (
         <section>

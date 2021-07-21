@@ -11,12 +11,12 @@ const Featured = () => {
 
   return (
     <section>
-      <h5 className="text-center" id="featured">--featured events--</h5>
-      <Carousel id="" className="controls" data-ride="carousel">
+      <h5 className="text-center pb-3" id="featured">--featured events--</h5>
+      <Carousel id="" className="controls " data-ride="carousel">
         {featuredEvent.map((post, i) => (
-          <Carousel.Item key={i} className="w-100">
+          <Carousel.Item key={i} className="w-100 h-100" onClick={()=> (window.location.assign(`/post/${post._id}`))}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 "
               src={post.image}
               alt="..."
             />
