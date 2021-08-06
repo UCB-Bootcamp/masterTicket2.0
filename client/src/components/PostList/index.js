@@ -7,20 +7,22 @@ const PostList = ({ posts }) => {
 
   return (
     
-    <div class="card-group d-flex container">
-      <div class="row ">
+    <div className="card-group d-flex container">
+      <div className="row ">
       {posts &&
         posts.map((post, i) => (
-          <article class="card col-6 col-md-4 m-auto pb-3" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
-          
-            <div class="card-body ">
-              <h5 class="card-title">{post.band}</h5>
-              <p class="card-text">{post.date}</p>
-            </div>
-            <img class="card-img-top mb-3" src={post.image} alt={post.eventTitle} />
-            <button type="button" variant="secondary" class="btn btn-light btn-sm" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</button>
-          </article>
+          <article className="card col-6 col-md-4 m-auto pb-3" key={i} onClick={()=> (window.location.assign(`/post/${post._id}`))}>
+            <div className="card-body ">
 
+              <h5 className="card-title">{post.band}</h5>
+              {/* <h5 className="card-title">{post.venue}</h5> */}
+              <div>
+              <p className="card-text">{post.date}</p>
+              </div>
+            </div>
+            <img className="card-img-top mb-3" src={post.image} alt={post.eventTitle} />
+            <button type="button" variant="secondary" className="btn btn-light btn-sm checkout-post-button" onClick={()=> (window.location.assign(`/post/${post._id}`))}>checkout post</button>
+          </article>
       ))}
       </div>
     </div>  

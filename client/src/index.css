@@ -420,14 +420,18 @@ nav ul li {
     color: fff;
     padding: 10px;
     font-weight: bold;
-
 }
 
 .venue {
-    background: #3c3c3c;
+    /* background: #3c3c3c; */
     -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.1);
             box-shadow: 0 0 50px rgba(0,0,0,0.1);
     -webkit-transition: 300ms ease-in-out;
+
+}
+
+.checkout-post-button {
+    margin: auto;
 }
 
 .desc {
