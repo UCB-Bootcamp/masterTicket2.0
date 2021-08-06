@@ -153,6 +153,7 @@ a:hover {
 .card-title {
     margin-top: 5px;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .card-by {
@@ -416,17 +417,25 @@ nav ul li {
     background: #323336;
 }
 
-.venue, .date, .genre, .city {
+.venue, .date, .genre, .city, .band {
     color: fff;
-    padding: 10px;
     font-weight: bold;
+}
+
+.band-venue-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date {
+    text-align: center;
+
 }
 
 .venue {
     /* background: #3c3c3c; */
     -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.1);
             box-shadow: 0 0 50px rgba(0,0,0,0.1);
-    -webkit-transition: 300ms ease-in-out;
 
 }
 
