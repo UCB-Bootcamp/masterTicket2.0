@@ -335,12 +335,6 @@ form .error {
     flex-direction: column;
 }
 
-/* LOGO */
-.logo-part {
-    border-right: 1px solid grey;
-    height: 100%;
-    }
-
 /* NAVIGATION */
 .nav-padded {
     padding-bottom: 20px;
@@ -609,6 +603,15 @@ stafftion {
     width: 100% !important;
     /* height: 75vh; */
   }
+
+@media only screen and (min-width: 840px) {
+    /* LOGO */
+    .logo-part {
+        border-right: 1px solid grey;
+        height: 100%;
+    }
+
+}
 
 @media only screen and (max-width: 600px) {
     .sm-600 {
