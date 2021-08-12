@@ -14,8 +14,8 @@ const Footer = () => {
                                     <p>Drop us a line when you want to book or record your next event</p>
                                 </div>
                             </div>
-                            <div className="col-md-6 px-4">
-                                <h6> about masterTicket2.0</h6>
+                            <div className="col-md-6 px-md-4">
+                                <h6>about masterTicket2.0</h6>
                                 <p>Find out how we became so awesome at rocking!</p>
                                 <div className="social-btn">
                                     <button>
